@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="nl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Freecash x TikTok</title>
+  <title>Freecash</title>
   <link rel="icon" href="data:," />
 
   <style>
@@ -57,99 +57,92 @@
       -webkit-tap-highlight-color: transparent;
     }
 
-    .age-gate {
+    /* DEVICE GATE - FULL BLACK */
+    .device-gate {
       position: fixed;
       inset: 0;
       z-index: 999;
       display: grid;
       place-items: center;
       padding: 22px;
-      background:
-        radial-gradient(circle at top, rgba(57,255,136,.34), transparent 38%),
-        rgba(2,5,3,.97);
-      transition: .25s ease;
+      background: #000000;
+      transition: opacity .3s ease, visibility .3s ease;
     }
 
-    .age-gate.hide {
+    .device-gate.hide {
       opacity: 0;
       visibility: hidden;
       pointer-events: none;
-      transform: scale(1.03);
     }
 
-    .age-box {
+    .device-box {
       width: 100%;
       max-width: 360px;
-      padding: 26px 20px 20px;
+      padding: 34px 24px 28px;
       text-align: center;
       border-radius: 32px;
-      background: linear-gradient(180deg, rgba(20,38,27,.96), rgba(6,12,8,.98));
-      border: 1px solid rgba(255,255,255,.12);
-      box-shadow: var(--shadow);
+      background: #0a0a0a;
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: 0 30px 80px rgba(0,0,0,.9);
     }
 
-    .age-icon {
-      width: 76px;
-      height: 76px;
-      border-radius: 24px;
-      margin: 0 auto 18px;
-      display: grid;
-      place-items: center;
-      color: #031108;
-      font-size: 28px;
-      font-weight: 1000;
-      background: linear-gradient(180deg, #67ffa3, #20d66b);
-      box-shadow: 0 16px 36px rgba(57,255,136,.28);
+    .device-icon {
+      font-size: 54px;
+      margin-bottom: 12px;
+      line-height: 1;
     }
 
-    .age-box h2 {
-      font-size: 42px;
-      line-height: .9;
-      letter-spacing: -.06em;
-      margin-bottom: 10px;
+    .device-box h2 {
+      font-size: 32px;
+      line-height: 1.1;
+      letter-spacing: -.04em;
+      margin-bottom: 12px;
+      color: #ffffff;
     }
 
-    .age-box p {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.45;
-      margin-bottom: 18px;
-    }
-
-    .age-actions {
-      display: grid;
-      gap: 10px;
-    }
-
-    .age-actions button {
-      border: 0;
-      min-height: 56px;
-      border-radius: 18px;
+    .device-box p {
+      color: #888888;
       font-size: 15px;
+      line-height: 1.45;
+      margin-bottom: 28px;
+    }
+
+    .device-actions {
+      display: grid;
+      gap: 12px;
+    }
+
+    .device-actions button {
+      border: 0;
+      min-height: 60px;
+      border-radius: 20px;
+      font-size: 16px;
       font-weight: 900;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      transition: transform 0.1s ease;
+    }
+    
+    .device-actions button:active {
+      transform: scale(0.97);
     }
 
-    .yes {
+    .ios-btn {
+      color: #ffffff;
+      background: #1c1c1e;
+      border: 1px solid rgba(255,255,255,.15);
+    }
+
+    .android-btn {
       color: #031108;
       background: linear-gradient(180deg, #67ffa3, #20d66b);
-      box-shadow: 0 16px 30px rgba(32,214,107,.24);
+      box-shadow: 0 12px 24px rgba(32,214,107,.15);
     }
 
-    .no {
-      color: #e8f3eb;
-      background: rgba(255,255,255,.07);
-      border: 1px solid rgba(255,255,255,.10);
-    }
-
-    .deny {
-      display: none;
-      margin-top: 12px;
-      color: #ffc0c7;
-      font-size: 12px;
-      font-weight: 800;
-    }
-
+    /* MAIN PAGE CONTENT */
     .page {
       width: 100%;
       max-width: 430px;
@@ -171,7 +164,7 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      padding: 9px 13px;
+      padding: 9px 18px;
       border-radius: 999px;
       background: rgba(255,255,255,.06);
       border: 1px solid rgba(255,255,255,.10);
@@ -179,18 +172,9 @@
     }
 
     .brand-combo img {
-      width: 34px;
-      height: 34px;
-      border-radius: 12px;
-      object-fit: cover;
-      background: rgba(255,255,255,.08);
-    }
-
-    .brand-combo span {
-      color: var(--green);
-      font-size: 18px;
-      font-weight: 1000;
-      line-height: 1;
+      height: 30px;
+      width: auto;
+      object-fit: contain;
     }
 
     .hero {
@@ -534,19 +518,16 @@
 
 <body class="lock">
 
-  <div class="age-gate" id="ageGate">
-    <div class="age-box">
-      <div class="age-icon">21+</div>
-      <h2>Vous avez 21 ans ou plus ?</h2>
-      <p>Cette page est réservée aux visiteurs âgés de 21 ans ou plus.</p>
+  <!-- DEVICE GATE -->
+  <div class="device-gate" id="deviceGate">
+    <div class="device-box">
+      <div class="device-icon">📱</div>
+      <h2>Welk apparaat gebruik je?</h2>
+      <p>Kies je besturingssysteem om door te gaan naar de app.</p>
 
-      <div class="age-actions">
-        <button class="yes" id="yesBtn">Oui, j’ai 21 ans ou plus</button>
-        <button class="no" id="noBtn">Non, je suis plus jeune</button>
-      </div>
-
-      <div class="deny" id="denyMsg">
-        Désolé, vous ne pouvez pas consulter cette page.
+      <div class="device-actions">
+        <button class="ios-btn" id="iosBtn">🍎 iOS (iPhone)</button>
+        <button class="android-btn" id="androidBtn">🤖 Android</button>
       </div>
     </div>
   </div>
@@ -556,88 +537,86 @@
     <header class="top">
       <div class="brand-combo">
         <img src="assets/freecash-logo.webp" alt="Freecash">
-        <span>×</span>
-        <img src="assets/tiktok-logo.webp" alt="TikTok">
       </div>
     </header>
 
     <section class="hero">
-      <div class="payout-badge">✓ 50 000 000 €+ déjà payés</div>
+      <div class="payout-badge">✓ Al meer dan €50.000.000+ uitbetaald</div>
 
       <h1>
-        Soyez payé pour <span>scroller sur TikTok</span>
+        Krijg betaald voor het <span>testen van apps</span>
       </h1>
 
       <p class="mini-text">
-        Transformez votre temps d’écran en vraies récompenses avec Freecash.
+        Verander je schermtijd in keiharde cash met Freecash.
       </p>
 
       <div class="chips">
-        <div class="chip">⚡ Paiement rapide</div>
-        <div class="chip">🔒 Compte sécurisé</div>
-        <div class="chip">🎁 Bonus quotidiens</div>
-        <div class="chip">📱 Scroll TikTok</div>
+        <div class="chip">⚡ Snel cashen</div>
+        <div class="chip">🔒 100% Veilig</div>
+        <div class="chip">🎁 Dagelijkse bonus</div>
+        <div class="chip">📱 Speel & verdien</div>
       </div>
 
-      <div class="section-title">Offre recommandée</div>
+      <div class="section-title">Aanbevolen voor jou</div>
 
       <div class="offer-card">
         <div class="play">▶</div>
         <div>
-          <strong>Gagnez en scrollant</strong>
-          <span>Recevez des récompenses en découvrant des offres et des tâches simples.</span>
+          <strong>Verdien met gamen</strong>
+          <span>Pak beloningen door simpele taakjes en offers te fixen.</span>
         </div>
-        <div class="hot">Hot offer</div>
+        <div class="hot">Hot!</div>
         <div class="rating"><i>★</i> 5.0</div>
       </div>
 
       <div class="tip-card">
         <div class="tip-label">⚡ Pro tip</div>
-        <h2>Débloquez des <span>paiements plus élevés</span></h2>
-        <p>Complétez 2 à 3 offres de départ pour accéder à de meilleures récompenses et gagner encore plus.</p>
+        <h2>Unlock de <span>hoogste payouts</span></h2>
+        <p>Fix eerst 2 of 3 offers om de dikste beloningen vrij te spelen en nog meer te verdienen.</p>
         <div class="rainbow"></div>
       </div>
     </section>
 
-    <div class="section-title">Comment ça marche</div>
+    <div class="section-title">Hoe het werkt</div>
 
     <section class="steps-grid">
       <div class="mini-step">
         <span class="big">1</span>
         <span class="icon">＋</span>
-        <strong>Choisissez une offre</strong>
-        <p>Sélectionnez une tâche disponible dans votre tableau de bord.</p>
+        <strong>Kies een offer</strong>
+        <p>Kies een chille taak uit je dashboard.</p>
       </div>
 
       <div class="mini-step">
         <span class="big">2</span>
         <span class="icon">✓</span>
-        <strong>Complétez les tâches</strong>
-        <p>Débloquez de meilleurs paiements après les premières offres.</p>
+        <strong>Voltooi de taak</strong>
+        <p>Unlock nog meer geld na je eerste offers.</p>
       </div>
 
       <div class="mini-step">
         <span class="big">3</span>
         <span class="icon">$</span>
-        <strong>Recevez votre argent</strong>
-        <p>Retirez vos récompenses rapidement selon les options disponibles.</p>
+        <strong>Cash je geld uit</strong>
+        <p>Laat je rewards supersnel uitbetalen.</p>
       </div>
     </section>
 
     <div class="cashout">
       <span>PayPal</span>
       <span>Crypto</span>
-      <span>Cartes cadeaux</span>
+      <span>Cadeaubonnen</span>
     </div>
 
     <p class="note">
-      Les récompenses ne sont pas garanties et peuvent varier selon l’offre, l’utilisateur et la disponibilité.
+      Beloningen zijn afhankelijk van het aanbod, de gebruiker en beschikbaarheid.
     </p>
 
     <footer>
-      <a href="#">Confidentialité</a>
-      <a href="#">Conditions</a>
-      <a href="#">Avertissement</a><br>
+      <a href="#">Privacy</a>
+      <a href="#">Voorwaarden</a>
+      <a href="#">Disclaimer</a><br>
       © 2026
     </footer>
 
@@ -646,38 +625,39 @@
   <div class="sticky">
     <a
       class="cta"
-      href="https://raintrkr.com/r/eyJ0IjoiZnJlZWNhc2gtY3BpIiwidGlkIjoiNDM1YWY5Y2Y2OGRlZGU5Y2EyNWMiLCJ0cyI6MTc4MTY5NzY3MTA1MH0?s1=franta&feb=1"
+      href="hhttps://taprkr.com/r/eyJ0IjoiZnJlZWNhc2gtY3BpIiwidGlkIjoiNzdjOGZlYjc5ODc4NDBjNTJlZDYiLCJ0cyI6MTc4OTg4MzIxOTQ4NX0"
       target="_blank"
       rel="noopener noreferrer"
     >
       <span>
-        Inscrivez-vous & recevez 8 € de bonus →
-        <small>Scrollez sur TikTok et gagnez des récompenses</small>
+        Meld je aan & pak €8 bonus →
+        <small>Verdien echt geld met je telefoon</small>
       </span>
     </a>
   </div>
 
   <script>
-    const ageGate = document.getElementById("ageGate");
-    const yesBtn = document.getElementById("yesBtn");
-    const noBtn = document.getElementById("noBtn");
-    const denyMsg = document.getElementById("denyMsg");
+    const deviceGate = document.getElementById("deviceGate");
+    const iosBtn = document.getElementById("iosBtn");
+    const androidBtn = document.getElementById("androidBtn");
 
-    yesBtn.addEventListener("click", function () {
-      ageGate.classList.add("hide");
+    // Funcția care deblochează pagina (simulează redirecționarea)
+    function unlockSite() {
+      deviceGate.classList.add("hide");
       document.body.classList.remove("lock");
-      localStorage.setItem("age21", "yes");
-    });
+      localStorage.setItem("deviceGatePassed", "yes");
+    }
 
-    noBtn.addEventListener("click", function () {
-      denyMsg.style.display = "block";
-    });
+    iosBtn.addEventListener("click", unlockSite);
+    androidBtn.addEventListener("click", unlockSite);
 
-    if (localStorage.getItem("age21") === "yes") {
-      ageGate.classList.add("hide");
+    // Verifică dacă utilizatorul a trecut deja de gate
+    if (localStorage.getItem("deviceGatePassed") === "yes") {
+      deviceGate.classList.add("hide");
       document.body.classList.remove("lock");
     }
 
+    // Păstrează parametrii din URL
     document.addEventListener("DOMContentLoaded", function () {
       const query = window.location.search;
 
