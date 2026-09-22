@@ -125,7 +125,7 @@
       gap: 10px;
       transition: transform 0.1s ease;
     }
-    
+
     .device-actions button:active {
       transform: scale(0.97);
     }
@@ -183,19 +183,6 @@
       flex-direction: column;
       justify-content: center;
       padding: 4px 0 20px;
-    }
-
-    .payout-badge {
-      width: fit-content;
-      margin: 0 auto 24px;
-      padding: 10px 15px;
-      border-radius: 999px;
-      color: #baffd0;
-      background: rgba(57,255,136,.12);
-      border: 1px solid rgba(57,255,136,.34);
-      box-shadow: inset 0 0 20px rgba(57,255,136,.05);
-      font-size: 14px;
-      font-weight: 1000;
     }
 
     h1 {
@@ -373,72 +360,6 @@
       box-shadow: 0 0 20px rgba(57,255,136,.22);
     }
 
-    .steps-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-    }
-
-    .mini-step {
-      min-height: 180px;
-      padding: 18px 10px 12px;
-      border-radius: 18px;
-      text-align: center;
-      background: rgba(255,255,255,.035);
-      border: 1px solid rgba(255,255,255,.10);
-    }
-
-    .mini-step .big {
-      display: block;
-      color: var(--green);
-      font-size: 34px;
-      line-height: 1;
-      font-weight: 1000;
-      margin-bottom: 10px;
-    }
-
-    .mini-step .icon {
-      display: block;
-      color: var(--green);
-      font-size: 32px;
-      line-height: 1;
-      margin-bottom: 16px;
-    }
-
-    .mini-step strong {
-      display: block;
-      color: #fff;
-      font-size: 15px;
-      line-height: 1.12;
-      letter-spacing: -.035em;
-      margin-bottom: 10px;
-    }
-
-    .mini-step p {
-      color: #b8c7bd;
-      font-size: 12px;
-      line-height: 1.35;
-      font-weight: 700;
-    }
-
-    .cashout {
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 16px;
-    }
-
-    .cashout span {
-      padding: 9px 11px;
-      border-radius: 999px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.08);
-      color: #d7e7db;
-      font-size: 12px;
-      font-weight: 850;
-    }
-
     .note {
       margin-top: 12px;
       color: #8fa596;
@@ -504,14 +425,6 @@
       .chips {
         grid-template-columns: 1fr;
       }
-
-      .steps-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .mini-step {
-        min-height: auto;
-      }
     }
   </style>
 </head>
@@ -523,7 +436,6 @@
     <div class="device-box">
       <div class="device-icon">📱</div>
       <h2>Welk apparaat gebruik je?</h2>
-     
 
       <div class="device-actions">
         <button class="ios-btn" id="iosBtn">🍎 iOS (iPhone)</button>
@@ -541,14 +453,12 @@
     </header>
 
     <section class="hero">
-      <div class="payout-badge">✓ Al meer dan €50.000.000+ uitbetaald</div>
-
       <h1>
         Krijg betaald voor het <span>testen van apps</span>
       </h1>
 
       <p class="mini-text">
-        Verander je schermtijd in keiharde cash met Freecash.
+        Verander gamen in keiharde cash met Freecash.
       </p>
 
       <div class="chips">
@@ -572,42 +482,11 @@
 
       <div class="tip-card">
         <div class="tip-label">⚡ Pro tip</div>
-        <h2>Unlock de <span>hoogste payouts</span></h2>
+        <h2>Unlock de <span>hoogste beloningen</span></h2>
         <p>Fix eerst 2 of 3 offers om de dikste beloningen vrij te spelen en nog meer te verdienen.</p>
         <div class="rainbow"></div>
       </div>
     </section>
-
-    <div class="section-title">Hoe het werkt</div>
-
-    <section class="steps-grid">
-      <div class="mini-step">
-        <span class="big">1</span>
-        <span class="icon">＋</span>
-        <strong>Kies een offer</strong>
-        <p>Kies een chille taak uit je dashboard.</p>
-      </div>
-
-      <div class="mini-step">
-        <span class="big">2</span>
-        <span class="icon">✓</span>
-        <strong>Voltooi de taak</strong>
-        <p>Unlock nog meer geld na je eerste offers.</p>
-      </div>
-
-      <div class="mini-step">
-        <span class="big">3</span>
-        <span class="icon">$</span>
-        <strong>Cash je geld uit</strong>
-        <p>Laat je rewards supersnel uitbetalen.</p>
-      </div>
-    </section>
-
-    <div class="cashout">
-      <span>PayPal</span>
-      <span>Crypto</span>
-      <span>Cadeaubonnen</span>
-    </div>
 
     <p class="note">
       Beloningen zijn afhankelijk van het aanbod, de gebruiker en beschikbaarheid.
