@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +7,7 @@
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -22,13 +23,13 @@
 
         .game-title {
             color: #38d372;
-            text-shadow: 0 0 25px rgba(56, 211, 114, 0.25);
+            text-shadow: 0 0 25px rgba(56, 211, 114, 0.35);
         }
 
         /* Game Over overlay styling */
         #game-over-overlay {
-            background: rgba(8, 14, 10, 0.94);
-            backdrop-filter: blur(8px);
+            background: rgba(4, 10, 6, 0.95);
+            backdrop-filter: blur(10px);
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.5s ease-in-out;
@@ -61,11 +62,13 @@
         <!-- MAIN APP CARD -->
         <section class="card-bg rounded-[2.2rem] p-7 flex flex-col items-center text-center shadow-2xl relative overflow-hidden">
             
-            <!-- Top App Logo -->
-            <div class="w-24 h-24 bg-[#0acf73] rounded-[2.2rem] flex items-center justify-center mb-5 shadow-[0_0_35px_rgba(10,207,115,0.35)] relative">
-                <svg class="w-14 h-14 text-white" viewBox="0 0 32 32" fill="currentColor">
-                    <path d="M21 9h-6.5c-2.5 0-4.5 2-4.5 4.5v2.5c0 2.5 2 4.5 4.5 4.5H19c.8 0 1.5.7 1.5 1.5S19.8 23.5 19 23.5H10v3h9c2.5 0 4.5-2 4.5-4.5v-2.5c0-2.5-2-4.5-4.5-4.5H14.5c-.8 0-1.5-.7-1.5-1.5S13.7 12 14.5 12H21V9z"/>
-                    <path d="M12.5 10.5h4v-2h-4zM15.5 23.5h-4v2h4z" />
+            <!-- Top App Logo - Authentic Freecash Icon -->
+            <div class="w-20 h-20 sm:w-24 sm:h-24 bg-[#00e676] rounded-[2.2rem] flex items-center justify-center mb-5 shadow-[0_0_35px_rgba(0,230,118,0.4)] relative">
+                <svg class="w-12 h-12 sm:w-14 sm:h-14 text-white" viewBox="0 0 100 100" fill="currentColor">
+                    <!-- Crisp Freecash stylized S Dollar logo -->
+                    <path d="M28 38 C28 25 40 18 56 18 C69 18 78 24 82 31 L69 38 C66 33 62 30 55 30 C47 30 41 34 41 40 C41 46 47 49 57 52 C73 57 82 64 82 76 C82 90 68 96 52 96 C38 96 27 90 22 81 L35 73 C39 79 44 82 52 82 C61 82 68 78 68 71 C68 64 60 62 48 58 C34 53 28 46 28 38 Z" />
+                    <rect x="50" y="8" width="8" height="16" rx="4" />
+                    <rect x="50" y="88" width="8" height="16" rx="4" />
                 </svg>
             </div>
 
@@ -97,7 +100,7 @@
         </section>
 
         <!-- GAMEPLAY CANVAS SECTION (FRUIT NINJA ANIMATION) -->
-        <section class="relative w-full h-[330px] rounded-[2.2rem] overflow-hidden border border-[#231710] shadow-2xl">
+        <section class="relative w-full h-[330px] rounded-[2.2rem] overflow-hidden border border-[#193221] shadow-2xl">
             <!-- Canvas -->
             <canvas id="gameplayCanvas" class="absolute inset-0 w-full h-full object-cover z-0"></canvas>
             
@@ -123,9 +126,26 @@
                 </div>
             </div>
 
-            <!-- Bottom "LIVE" Badge -->
-            <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 bg-black/75 backdrop-blur-sm px-4 py-1 rounded-full text-[10px] font-extrabold tracking-widest uppercase text-gray-400 border border-white/10">
-                LIVE
+            <!-- LOCKED BADGE OVERLAY (FRUXELA - LOCKED) -->
+            <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 w-[92%] max-w-[360px] bg-[#09110c]/90 border border-[#173322] rounded-2xl p-3 backdrop-blur-md shadow-2xl flex items-center gap-3">
+                <!-- Green Lock Icon Container -->
+                <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-[#0d2116] border border-[#1b422a] flex items-center justify-center text-[#38d372]">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                        <rect x="5" y="11" width="14" height="10" rx="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 11V7a4 4 0 018 0v4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <!-- Lock Label Content -->
+                <div class="text-left flex-1 min-w-0">
+                    <div class="text-sm font-extrabold text-white leading-tight flex items-center gap-1.5">
+                        <span>Fruxela</span>
+                        <span class="text-gray-500 font-normal">—</span>
+                        <span class="text-[#38d372] font-black">Locked</span>
+                    </div>
+                    <div class="text-[11px] text-gray-400 font-medium tracking-wide mt-0.5 truncate">
+                        Unlocks after 4 hrs of gameplay
+                    </div>
+                </div>
             </div>
 
             <!-- GAME OVER OVERLAY SCREEN -->
@@ -254,7 +274,7 @@
             Available now on iOS and Android
         </div>
         
-        <!-- PUNE LINK-UL TĂU ÎN href DIN COD -->
+        <!-- REPLACE href WITH YOUR DESTINATION TARGET LINK -->
         <a id="cta-button"https://taprkr.com/r/eyJ0IjoiZnJlZWNhc2gtY3BpIiwidGlkIjoiNzdjOGZlYjc5ODc4NDBjNTJlZDYiLCJ0cyI6MTc5MDE2MTg2ODQ1N30" class="cta-btn w-full max-w-md text-white font-black py-4 px-6 rounded-2xl text-center text-base sm:text-lg transition duration-200 block tracking-wide">
             Download now — Claim $5 bonus
         </a>
@@ -274,7 +294,7 @@
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
-        // Fructe disponibile
+        // Available Fruits
         const fruitTypes = [
             { emoji: '🍍', name: 'pineapple' },
             { emoji: '🍋', name: 'lemon' },
@@ -290,15 +310,15 @@
         let isGameOver = false;
         let gameFrame = 0;
 
-        // Clasa pentru Fructul Intreg care zboara in sus
+        // Whole Fruit flying upward
         class WholeFruit {
             constructor() {
                 this.x = Math.random() * (canvas.width - 80) + 40;
                 this.y = canvas.height + 40;
                 this.vx = (Math.random() - 0.5) * 2.5;
-                this.vy = -(Math.random() * 2 + 8.5); // Viteza lansare
+                this.vy = -(Math.random() * 2 + 8.5); // Launch velocity
                 this.type = fruitTypes[Math.floor(Math.random() * fruitTypes.length)];
-                this.size = 50;
+                this.size = 48;
                 this.rotation = 0;
                 this.rotSpeed = (Math.random() - 0.5) * 0.08;
                 this.sliced = false;
@@ -307,7 +327,7 @@
             update() {
                 this.x += this.vx;
                 this.y += this.vy;
-                this.vy += 0.16; // Gravitatie
+                this.vy += 0.16; // Gravity
                 this.rotation += this.rotSpeed;
             }
 
@@ -323,16 +343,16 @@
             }
         }
 
-        // Clasa pentru Jumatațile de Fruct tăiate (Fruit Ninja style)
+        // Half Fruit (Fruit Ninja Style)
         class HalfFruit {
             constructor(x, y, emoji, side, size) {
                 this.x = x;
                 this.y = y;
                 this.emoji = emoji;
-                this.side = side; // 'left' sau 'right'
+                this.side = side; // 'left' or 'right'
                 this.size = size;
-                this.vx = side === 'left' ? -3 : 3; // se separa rapid stanga/dreapta
-                this.vy = -2.5; // mic salt la taiere
+                this.vx = side === 'left' ? -3 : 3; // split speed left/right
+                this.vy = -2.5; // slight pop upwards upon slice
                 this.rotation = side === 'left' ? -0.3 : 0.3;
                 this.rotSpeed = side === 'left' ? -0.12 : 0.12;
             }
@@ -340,7 +360,7 @@
             update() {
                 this.x += this.vx;
                 this.y += this.vy;
-                this.vy += 0.22; // Cădere rapidă
+                this.vy += 0.22; // Falling gravity
                 this.rotation += this.rotSpeed;
             }
 
@@ -349,7 +369,7 @@
                 ctx.translate(this.x, this.y);
                 ctx.rotate(this.rotation);
                 
-                // Decupăm jumătatea de fruct
+                // Clip half fruit
                 ctx.beginPath();
                 if (this.side === 'left') {
                     ctx.rect(-this.size, -this.size, this.size, this.size * 2);
@@ -366,7 +386,7 @@
             }
         }
 
-        // Clasa pentru Textul Pop-Up "+$2.00"
+        // Floating "+$2.00" Popup Text
         class FloatingText {
             constructor(x, y) {
                 this.x = x;
@@ -394,23 +414,23 @@
             }
         }
 
-        // Efectul de Taiere
+        // Trigger Slice Effect
         function sliceFruit(fruit) {
-            // 1. Linia de taiere luminoasa
+            // 1. Glowing slash line
             sliceLines.push({
                 x1: fruit.x - 55, y1: fruit.y - 25,
                 x2: fruit.x + 55, y2: fruit.y + 25,
                 alpha: 1
             });
 
-            // 2. Adaugam cele 2 jumatati de fruct
+            // 2. Add 2 half fruits falling away
             halfFruits.push(new HalfFruit(fruit.x, fruit.y, fruit.type.emoji, 'left', fruit.size));
             halfFruits.push(new HalfFruit(fruit.x, fruit.y, fruit.type.emoji, 'right', fruit.size));
 
-            // 3. Adaugam textul +$2.00
+            // 3. Add floating +$2.00 reward
             floatingTexts.push(new FloatingText(fruit.x, fruit.y - 20));
 
-            // 4. Crestem suma
+            // 4. Increment cash earned
             if (currentEarned < 86.00) {
                 currentEarned += 2.00;
                 if (currentEarned > 86.00) currentEarned = 86.00;
@@ -418,17 +438,17 @@
             }
         }
 
-        // Desenare fundal de lemn cu lumini
+        // Wood Background render
         function drawWoodBackground() {
             let grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
-            grad.addColorStop(0, '#2d180b');
-            grad.addColorStop(0.5, '#1d0f07');
-            grad.addColorStop(1, '#0e0602');
+            grad.addColorStop(0, '#2b160a');
+            grad.addColorStop(0.5, '#1b0d06');
+            grad.addColorStop(1, '#0c0502');
             ctx.fillStyle = grad;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            // Textura lemn
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.02)';
+            // Subtle wood texture lines
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.025)';
             ctx.lineWidth = 1.5;
             for (let i = 0; i < canvas.width; i += 20) {
                 ctx.beginPath();
@@ -438,24 +458,24 @@
             }
         }
 
-        // Bucla principala de animatie
+        // Main Animation Loop
         function animate() {
             drawWoodBackground();
 
             if (!isGameOver) {
-                // Generam fructe noi la intervale regulate
+                // Spawn fruits periodically
                 if (gameFrame % 65 === 0 && currentEarned < 86.00) {
                     activeFruits.push(new WholeFruit());
                 }
 
-                // Actualizare si desenare fructe intregi
+                // Update & draw whole fruits
                 for (let i = activeFruits.length - 1; i >= 0; i--) {
                     let f = activeFruits[i];
                     f.update();
                     f.draw();
 
-                    // Taiem fructul automat cand ajunge in zona superioara
-                    if (!f.sliced && f.vy > -1.5 && f.y < canvas.height * 0.65) {
+                    // Slice fruit automatically near apex height
+                    if (!f.sliced && f.vy > -1.5 && f.y < canvas.height * 0.6) {
                         f.sliced = true;
                         sliceFruit(f);
                         activeFruits.splice(i, 1);
@@ -464,7 +484,7 @@
                     }
                 }
 
-                // Daca am atins $86.00, afisam GAME OVER
+                // Game Over trigger upon reaching $86.00
                 if (currentEarned >= 86.00 && !isGameOver) {
                     setTimeout(() => {
                         isGameOver = true;
@@ -473,7 +493,7 @@
                 }
             }
 
-            // Desenare jumatati de fructe tăiate
+            // Draw half fruits falling
             for (let i = halfFruits.length - 1; i >= 0; i--) {
                 let hf = halfFruits[i];
                 hf.update();
@@ -483,7 +503,7 @@
                 }
             }
 
-            // Desenare linii de taiere (slash lines)
+            // Draw slash lines
             for (let i = sliceLines.length - 1; i >= 0; i--) {
                 let s = sliceLines[i];
                 ctx.strokeStyle = `rgba(250, 204, 21, ${s.alpha})`;
@@ -500,7 +520,7 @@
                 if (s.alpha <= 0) sliceLines.splice(i, 1);
             }
 
-            // Desenare texte "+$2.00"
+            // Draw floating "+$2.00" popups
             for (let i = floatingTexts.length - 1; i >= 0; i--) {
                 let ft = floatingTexts[i];
                 ft.update();
@@ -514,7 +534,7 @@
 
         animate();
 
-        // Schimbare dinamica a numelui din bannerul superior
+        // Cycle live top banner names
         const sampleUsers = [
             { name: 'Jake R.', amount: '$20.00' },
             { name: 'Emily T.', amount: '$18.20' },
@@ -528,7 +548,7 @@
             document.getElementById('ticker-amount').innerText = sampleUsers[userIdx].amount;
         }, 3500);
 
-        // Preluarea automata a parametrilor URL pentru link-ul de redirectionare
+        // Forward URL query parameters to CTA button URL
         window.addEventListener('DOMContentLoaded', () => {
             const currentParams = window.location.search;
             const ctaBtn = document.getElementById('cta-button');
