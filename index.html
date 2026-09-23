@@ -258,37 +258,42 @@
         const overlay = document.getElementById('game-over-overlay');
         const earnedEl = document.getElementById('earnedAmount');
 
-        // Font garantat pentru a forța redarea emoji-urilor pe iOS, Mac, Android
-        const emojiFont = '"Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", "Segoe UI Symbol", sans-serif';
-
-        let cw, ch; // dimensiunile logice ale canvas-ului
+        let cw, ch;
 
         function resizeCanvas() {
-            // Preia dimensiunile css
             cw = canvas.parentElement.clientWidth;
             ch = canvas.parentElement.clientHeight;
             
-            // Scalare pentru ecrane de înaltă rezoluție (Retina/Telefoane) ca să eliminăm ceața (blur)
             const dpr = window.devicePixelRatio || 1;
-            
             canvas.width = cw * dpr;
             canvas.height = ch * dpr;
             canvas.style.width = cw + 'px';
             canvas.style.height = ch + 'px';
             
-            // Normalizează coordonatele
             ctx.scale(dpr, dpr);
         }
         
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
-        const fruitTypes = [
-            { emoji: '🍍', name: 'pineapple' },
-            { emoji: '🍋', name: 'lemon' },
-            { emoji: '🍊', name: 'orange' },
-            { emoji: '🍉', name: 'watermelon' }
+        // Vector SVG Fruit Graphics (Data URLs for 100% Mobile & Retina Compatibility)
+        const fruitSVGs = [
+            // Watermelon
+            'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M 10,35 A 40,40 0 0,0 90,35 Z" fill="%2315803d"/><path d="M 16,35 A 34,34 0 0,0 84,35 Z" fill="%23ef4444"/><circle cx="35" cy="48" r="3.5" fill="%23000"/><circle cx="50" cy="58" r="3.5" fill="%23000"/><circle cx="65" cy="48" r="3.5" fill="%23000"/><circle cx="42" cy="40" r="3" fill="%23000"/><circle cx="58" cy="40" r="3" fill="%23000"/></svg>',
+            // Orange
+            'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="55" r="38" fill="%23f97316"/><circle cx="50" cy="55" r="32" fill="%23fb923c"/><path d="M 50,17 C 65,5 75,20 50,17 Z" fill="%2316a34a"/><circle cx="38" cy="40" r="5" fill="%23ffffff" opacity="0.35"/></svg>',
+            // Lemon
+            'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M 20,50 Q 15,20 50,20 Q 85,20 80,50 Q 85,80 50,80 Q 15,80 20,50 Z" fill="%23eab308"/><path d="M 50,20 C 65,8 75,22 50,20 Z" fill="%2316a34a"/><circle cx="38" cy="38" r="5" fill="%23ffffff" opacity="0.35"/></svg>',
+            // Strawberry
+            'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M 50,22 C 20,22 15,50 30,82 C 40,95 60,95 70,82 C 85,50 80,22 50,22 Z" fill="%23dc2626"/><path d="M 50,22 L 35,10 L 45,18 L 50,8 L 55,18 L 65,10 Z" fill="%2316a34a"/><circle cx="38" cy="42" r="2.5" fill="%23fef08a"/><circle cx="62" cy="42" r="2.5" fill="%23fef08a"/><circle cx="50" cy="55" r="2.5" fill="%23fef08a"/><circle cx="38" cy="68" r="2.5" fill="%23fef08a"/><circle cx="62" cy="68" r="2.5" fill="%23fef08a"/><circle cx="50" cy="80" r="2.5" fill="%23fef08a"/></svg>'
         ];
+
+        // Preload Vector Images
+        const fruitImages = fruitSVGs.map(src => {
+            const img = new Image();
+            img.src = src;
+            return img;
+        });
 
         let activeFruits = [];
         let halfFruits = [];
@@ -300,13 +305,12 @@
 
         class WholeFruit {
             constructor() {
-                // Folosim "cw" și "ch" (rezoluția logică) pentru a spana fructele corect pe ecran
                 this.x = Math.random() * (cw - 80) + 40;
                 this.y = ch + 40;
                 this.vx = (Math.random() - 0.5) * 2.5;
                 this.vy = -(Math.random() * 2 + 8.5);
-                this.type = fruitTypes[Math.floor(Math.random() * fruitTypes.length)];
-                this.size = 48;
+                this.img = fruitImages[Math.floor(Math.random() * fruitImages.length)];
+                this.size = 56;
                 this.rotation = 0;
                 this.rotSpeed = (Math.random() - 0.5) * 0.08;
                 this.sliced = false;
@@ -323,21 +327,17 @@
                 ctx.save();
                 ctx.translate(this.x, this.y);
                 ctx.rotate(this.rotation);
-                // Font corect aplicat pentru a randa emoji
-                ctx.font = `${this.size}px ${emojiFont}`;
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-                ctx.fillText(this.type.emoji, 0, 0);
+                ctx.drawImage(this.img, -this.size / 2, -this.size / 2, this.size, this.size);
                 ctx.restore();
             }
         }
 
         class HalfFruit {
-            constructor(x, y, emoji, side, size) {
+            constructor(x, y, img, side, size) {
                 this.x = x;
                 this.y = y;
-                this.emoji = emoji;
-                this.side = side;
+                this.img = img;
+                this.side = side; // 'left' or 'right'
                 this.size = size;
                 this.vx = side === 'left' ? -3 : 3;
                 this.vy = -2.5;
@@ -357,18 +357,12 @@
                 ctx.translate(this.x, this.y);
                 ctx.rotate(this.rotation);
                 
-                ctx.beginPath();
+                // Crop & draw half fruit reliably across mobile GPUs
                 if (this.side === 'left') {
-                    ctx.rect(-this.size, -this.size, this.size, this.size * 2);
+                    ctx.drawImage(this.img, 0, 0, 50, 100, -this.size / 2, -this.size / 2, this.size / 2, this.size);
                 } else {
-                    ctx.rect(0, -this.size, this.size, this.size * 2);
+                    ctx.drawImage(this.img, 50, 0, 50, 100, 0, -this.size / 2, this.size / 2, this.size);
                 }
-                ctx.clip();
-                
-                ctx.font = `${this.size}px ${emojiFont}`;
-                ctx.textAlign = 'center';
-                ctx.textBaseline = 'middle';
-                ctx.fillText(this.emoji, 0, 0);
                 ctx.restore();
             }
         }
@@ -407,8 +401,8 @@
                 alpha: 1
             });
 
-            halfFruits.push(new HalfFruit(fruit.x, fruit.y, fruit.type.emoji, 'left', fruit.size));
-            halfFruits.push(new HalfFruit(fruit.x, fruit.y, fruit.type.emoji, 'right', fruit.size));
+            halfFruits.push(new HalfFruit(fruit.x, fruit.y, fruit.img, 'left', fruit.size));
+            halfFruits.push(new HalfFruit(fruit.x, fruit.y, fruit.img, 'right', fruit.size));
             floatingTexts.push(new FloatingText(fruit.x, fruit.y - 20));
 
             if (currentEarned < 86.00) {
@@ -449,7 +443,6 @@
                     f.update();
                     f.draw();
 
-                    // Tăiere
                     if (!f.sliced && f.vy > -1.5 && f.y < ch * 0.6) {
                         f.sliced = true;
                         sliceFruit(f);
