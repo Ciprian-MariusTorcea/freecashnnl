@@ -1,192 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Get Paid For Playing Games</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0b0f17;
+            background-color: #050b08; /* Verde foarte închis, aproape negru */
             color: #ffffff;
         }
-        .gradient-text {
-            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .game-title {
+            color: #4ade80; /* Verde luminos */
+            text-shadow: 0 0 20px rgba(74, 222, 128, 0.2);
         }
-        .glow-btn {
-            box-shadow: 0 0 25px rgba(59, 130, 246, 0.5);
+        .card-bg {
+            background-color: #0a1410;
+            border: 1px solid #162a20;
         }
     </style>
 </head>
-<body class="min-h-screen pb-28 pt-4 px-4 flex flex-col items-center">
+<body class="min-h-screen pb-32 pt-2 px-4 flex flex-col items-center">
 
-    <div class="w-full max-w-md bg-gray-900/80 border border-gray-800 backdrop-blur rounded-full py-2 px-4 mb-6 text-xs text-gray-300 flex items-center justify-center gap-2 shadow-lg">
-        <span>🇺🇸</span>
-        <span class="font-semibold text-white">Jake R.</span>
-        <span>just earned</span>
-        <span class="font-bold text-green-400">$20.00</span>
-        <span class="text-gray-500">— paid instantly</span>
+    <!-- Notification Banner (Top) -->
+    <div class="w-full text-center py-2 mb-4 text-[11px] text-gray-400">
+        <span>us</span> <span class="font-bold text-white">Jake R.</span> just earned <span class="font-bold text-green-400">$20.00</span> — paid instantly
     </div>
 
+    <!-- Main Container -->
     <main class="w-full max-w-md flex flex-col gap-6">
 
-        <section class="text-center flex flex-col items-center gap-4">
-            <img src="https://fchrewadring.lovable.app/__l5e/assets-v1/888c0057-c45d-4307-98d6-5cbd5256d48c/fcsh.webp" alt="App logo" class="w-24 h-24 rounded-3xl shadow-xl border border-white/10 object-cover">
-
-            <div class="flex items-center gap-2 bg-gray-900/90 border border-gray-800 px-3 py-1 rounded-full text-xs">
-                <span class="text-yellow-400 font-bold">4.8</span>
-                <span class="text-gray-600">•</span>
-                <span class="text-gray-300">App Store</span>
-                <span class="text-gray-500">(14.2k reviews)</span>
+        <!-- Hero Section Card -->
+        <section class="card-bg rounded-[2rem] p-8 flex flex-col items-center text-center shadow-2xl">
+            
+            <!-- App Logo (Green S Icon mimic) -->
+            <div class="w-24 h-24 bg-[#10b981] rounded-[2rem] flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(16,185,129,0.3)]">
+                <svg class="w-14 h-14 text-white" viewBox="0 0 24 24" fill="currentColor">
+                    <!-- A stylized S/Money shape to match the logo -->
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.31-8.86c-1.77-.45-2.34-.94-2.34-1.67 0-.84.79-1.43 2.1-1.43 1.38 0 1.9.66 1.94 1.64h1.71c-.05-1.34-.87-2.57-2.49-2.97V5H10.9v1.69c-1.51.32-2.72 1.3-2.72 2.81 0 1.79 1.49 2.69 3.66 3.21 1.95.46 2.34 1.15 2.34 1.87 0 .53-.39 1.64-2.25 1.64-1.74 0-2.26-1.15-2.32-1.95H7.9c.07 1.64 1.1 2.85 3 3.26V19h2.33v-1.63c1.82-.36 2.92-1.49 2.92-3 0-1.87-1.45-2.61-3.84-3.23z"/>
+                </svg>
             </div>
 
-            <h1 class="text-3xl font-extrabold tracking-tight leading-tight">
-                Get Paid For<br><span class="gradient-text">Playing Games</span>
+            <!-- Rating -->
+            <div class="flex items-center gap-1.5 bg-[#050b08] border border-[#162a20] px-3 py-1.5 rounded-full text-[11px] mb-4">
+                <div class="flex text-red-500 text-[10px]">
+                    ★★★★★
+                </div>
+                <span class="text-white font-bold ml-1">4.8</span>
+                <span class="text-gray-600 px-1">•</span>
+                <span class="text-gray-300">App Store</span>
+                <span class="text-gray-500 ml-1">(14.2k reviews)</span>
+            </div>
+
+            <!-- Title & Subtitle -->
+            <h1 class="text-[2.2rem] font-black tracking-tight leading-[1.1] mb-4">
+                <span class="text-white">Get Paid For</span><br>
+                <span class="game-title">Playing Games</span>
             </h1>
-            <p class="text-gray-400 text-sm max-w-xs">
+            <p class="text-gray-400 text-sm max-w-[280px] leading-relaxed mb-6">
                 Play games, complete quick tasks, and cash out real money anytime, no minimum.
             </p>
 
-            <div class="flex items-center gap-2 bg-emerald-950/40 border border-emerald-800/40 text-emerald-400 px-3 py-1.5 rounded-full text-xs">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-                <span class="font-bold">1,845</span>
-                <span class="text-emerald-300/80">people earning right now</span>
+            <!-- Earning Pill -->
+            <div class="flex items-center gap-2 bg-[#0a1e14] border border-[#103a24] text-white px-4 py-2 rounded-full text-[11px]">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#4ade80] animate-pulse shadow-[0_0_8px_#4ade80]"></span>
+                <span class="font-bold text-[#4ade80]">1,845</span>
+                <span class="text-gray-300">people earning right now</span>
             </div>
         </section>
 
-        <section class="relative bg-gray-950 border border-gray-800/80 rounded-2xl overflow-hidden h-64 flex flex-col justify-between p-4 shadow-2xl">
+        <!-- Live Gameplay Interactive Video/Canvas Section -->
+        <section class="relative w-full h-[320px] rounded-[2rem] overflow-hidden border border-[#2a1f18] shadow-2xl">
+            <!-- Canvas Animation (Fruxela Gameplay Smoother) -->
             <canvas id="gameplayCanvas" class="absolute inset-0 w-full h-full object-cover z-0"></canvas>
             
-            <div class="relative z-10 flex justify-between items-start">
-                <div class="bg-black/60 backdrop-blur border border-white/10 px-3 py-1.5 rounded-xl text-xs">
-                    <div class="text-[10px] text-gray-400 uppercase tracking-wider font-semibold">Earned</div>
-                    <div class="text-green-400 font-extrabold text-sm">$<span id="earnedAmount">10.00</span></div>
+            <!-- Top Overlay Elements -->
+            <div class="relative z-10 flex justify-between items-start p-4">
+                <!-- Earned Left -->
+                <div class="bg-[#121c17]/90 border border-[#23352a] px-3 py-1.5 rounded-2xl flex flex-col items-center">
+                    <div class="text-[9px] text-gray-400 font-bold uppercase tracking-widest mb-0.5">Earned</div>
+                    <div class="text-[#4ade80] font-black text-xl leading-none">$<span id="earnedAmount">12.00</span></div>
                 </div>
                 
-                <div class="bg-black/60 backdrop-blur border border-white/10 px-3 py-1.5 rounded-xl text-xs flex gap-1 text-red-500">
-                    ❤️ ❤️ ❤️
+                <!-- Hearts Middle -->
+                <div class="bg-[#121c17]/80 border border-[#23352a] px-3 py-1.5 rounded-full flex gap-1.5 mt-1">
+                    <span class="text-red-500 text-xs">❤️</span>
+                    <span class="text-red-500 text-xs">❤️</span>
+                    <span class="text-red-500 text-xs">❤️</span>
                 </div>
 
-                <div class="bg-black/60 backdrop-blur border border-white/10 px-3 py-1.5 rounded-xl text-xs text-right">
-                    <div class="text-green-400 font-extrabold">$2.00</div>
-                    <div class="text-[10px] text-gray-400">per slice</div>
+                <!-- Per slice Right -->
+                <div class="bg-[#241c0e]/90 border border-[#3a2d16] px-3 py-1.5 rounded-2xl flex flex-col items-center">
+                    <div class="text-yellow-400 font-black text-sm leading-none">$2.00</div>
+                    <div class="text-[9px] text-gray-400 mt-1">per slice</div>
                 </div>
             </div>
 
-            <div class="relative z-10 self-center bg-blue-600/80 backdrop-blur px-3 py-0.5 rounded-full text-[10px] font-bold tracking-widest uppercase text-white shadow">
+            <!-- Live Gameplay Tag (Bottom center) -->
+            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 bg-black/80 px-4 py-1.5 rounded-full text-[10px] font-bold tracking-widest uppercase text-gray-400">
                 Live gameplay
             </div>
-
-            <div class="relative z-10 bg-gray-900/90 backdrop-blur border border-gray-800 rounded-xl p-2.5 flex items-center gap-3">
-                <div class="w-8 h-8 rounded-lg bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 font-bold text-sm">🔒</div>
-                <div>
-                    <div class="text-xs font-bold text-white">Fruxela — <span class="text-amber-400">Locked</span></div>
-                    <div class="text-[10px] text-gray-400">Unlocks after 4 hrs of gameplay</div>
-                </div>
-            </div>
         </section>
-
-        <section class="bg-gray-900/40 border border-gray-800/60 rounded-2xl p-5">
-            <h2 class="text-lg font-bold mb-4">How it works</h2>
-            <ol class="space-y-4">
-                <li class="flex items-start gap-3">
-                    <span class="flex-shrink-0 w-7 h-7 rounded-full bg-blue-600/20 text-blue-400 border border-blue-500/30 font-bold flex items-center justify-center text-xs">1</span>
-                    <div class="text-xs text-gray-300 pt-1">Sign up on Freecash (Select 21+)</div>
-                </li>
-                <li class="flex items-start gap-3">
-                    <span class="flex-shrink-0 w-7 h-7 rounded-full bg-blue-600/20 text-blue-400 border border-blue-500/30 font-bold flex items-center justify-center text-xs">2</span>
-                    <div class="text-xs text-gray-300 pt-1">Complete at least 2-5 offers <br><span class="text-gray-500">(Play games & complete tasks)</span></div>
-                </li>
-                <li class="flex items-start gap-3">
-                    <span class="flex-shrink-0 w-7 h-7 rounded-full bg-blue-600/20 text-blue-400 border border-blue-500/30 font-bold flex items-center justify-center text-xs">3</span>
-                    <div class="text-xs text-gray-300 pt-1">Withdraw via PayPal, Venmo, and CashApp.</div>
-                </li>
-            </ol>
-        </section>
-
-        <section class="bg-gray-900/40 border border-gray-800/60 rounded-2xl p-5">
-            <h2 class="text-lg font-bold mb-3">Highest-paying offers today</h2>
-            
-            <div class="flex items-center gap-3 bg-gray-950/80 p-3 rounded-xl mb-4 border border-gray-800">
-                <img src="https://fchrewadring.lovable.app/__l5e/assets-v1/a7a03f04-b19a-4ec3-aa5d-7439e6800903/games-icon.png" alt="App icon" class="w-12 h-12 rounded-xl object-cover">
-                <div>
-                    <div class="font-bold text-xs">Get Paid To Game</div>
-                    <div class="text-[11px] text-gray-400">sign-up to unlock the games</div>
-                </div>
-            </div>
-
-            <ul class="space-y-2 text-xs">
-                <li class="flex justify-between items-center bg-gray-950/40 p-3 rounded-xl border border-gray-800/50">
-                    <div>
-                        <div class="font-semibold text-white">Milestone 1</div>
-                        <div class="text-[11px] text-gray-400">Play for 15 minutes</div>
-                        <div class="text-[10px] text-blue-400 mt-0.5">Free milestone</div>
-                    </div>
-                    <span class="font-extrabold text-green-400 text-base">$15</span>
-                </li>
-                <li class="flex justify-between items-center bg-gray-950/40 p-3 rounded-xl border border-gray-800/50">
-                    <div>
-                        <div class="font-semibold text-white">Milestone 2</div>
-                        <div class="text-[11px] text-gray-400">Reach Level 10</div>
-                        <div class="text-[10px] text-blue-400 mt-0.5">Free milestone</div>
-                    </div>
-                    <span class="font-extrabold text-green-400 text-base">$25</span>
-                </li>
-                <li class="flex justify-between items-center bg-gray-950/40 p-3 rounded-xl border border-gray-800/50">
-                    <div>
-                        <div class="font-semibold text-white">Milestone 3</div>
-                        <div class="text-[11px] text-gray-400">Reach Level 25</div>
-                        <div class="text-[10px] text-gray-500 mt-0.5">Insider move: skip ~4h grind with a small in-game purchase</div>
-                    </div>
-                    <span class="font-extrabold text-green-400 text-base">$55</span>
-                </li>
-            </ul>
-            
-            <p class="text-[11px] text-gray-500 mt-3">
-                You get paid when the milestone hits — not for spending. Purchases just kill the grind.
-            </p>
-        </section>
-
-        <section class="grid grid-cols-3 gap-2 text-center my-2">
-            <div class="bg-gray-900/50 border border-gray-800/80 p-3 rounded-xl">
-                <div class="font-extrabold text-sm text-white">500K+</div>
-                <div class="text-[10px] text-gray-400">Members</div>
-            </div>
-            <div class="bg-gray-900/50 border border-gray-800/80 p-3 rounded-xl">
-                <div class="font-extrabold text-sm text-yellow-400">4.8★</div>
-                <div class="text-[10px] text-gray-400">App Rating</div>
-            </div>
-            <div class="bg-gray-900/50 border border-gray-800/80 p-3 rounded-xl">
-                <div class="font-extrabold text-sm text-green-400">$342</div>
-                <div class="text-[10px] text-gray-400">Avg. Daily Earnings</div>
-            </div>
-        </section>
-
-        <footer class="text-center text-[11px] text-gray-500 space-y-3 pt-2">
-            <p>
-                Availability, rewards, and eligibility may vary by user, location, and completed activity. Results are not guaranteed and are based on individual participation.
-            </p>
-            <div class="flex justify-center gap-4 text-gray-400 underline">
-                <a href="https://www.testerup.com/privacy" target="_blank">Privacy Policy</a>
-                <a href="https://www.testerup.com/terms" target="_blank">Terms of Service</a>
-            </div>
-        </footer>
-
     </main>
 
-    <div class="fixed bottom-0 left-0 right-0 p-4 bg-gray-950/95 backdrop-blur-md border-t border-gray-800 flex flex-col items-center justify-center z-50">
-        <a id="cta-button"https://taprkr.com/r/eyJ0IjoiZnJlZWNhc2gtY3BpIiwidGlkIjoiNzdjOGZlYjc5ODc4NDBjNTJlZDYiLCJ0cyI6MTc5MDE2MTg2ODQ1N30" class="glow-btn w-full max-w-md bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold py-3.5 px-6 rounded-xl text-center shadow-lg transition duration-200 text-sm tracking-wide">
-            CLAIM REWARD & START EARNING
-        </a>
-        <span class="text-[10px] text-gray-400 mt-1.5 flex items-center gap-1">
-            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Available now on iOS and Android
+    <!-- Sticky Bottom CTA Button (AICI PUI LINK-UL TĂU) -->
+    <div class="fixed bottom-0 left-0 right-0 p-5 bg-[#050b08] border-t border-[#162a20] flex flex-col items-center justify-center z-50">
+        
+        <span class="text-[11px] text-gray-400 mb-3 flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#4ade80] shadow-[0_0_5px_#4ade80]"></span> Available now on iOS and Android
         </span>
+        
+        <!-- ÎNLOCUIEȘTE LINKUL DE MAI JOS ÎN ATRIBUTUL href -->
+        <a id="cta-button" href="https://taprkr.com/r/eyJ0IjoiZnJlZWNhc2gtY3BpIiwidGlkIjoiNzdjOGZlYjc5ODc4NDBjNTJlZDYiLCJ0cyI6MTc5MDE2MTg2ODQ1N30" class="w-full max-w-md bg-[#4ade80] hover:bg-[#3bce71] text-[#050b08] font-extrabold py-4 px-6 rounded-2xl text-center shadow-[0_0_20px_rgba(74,222,128,0.2)] transition duration-200 text-[15px]">
+            Download now — Claim $5 bonus
+        </a>
     </div>
 
+    <!-- Script Animație Gameplay Canvas (Mișcare mai fină/ușoară și fundal maro) -->
     <script>
         const canvas = document.getElementById('gameplayCanvas');
         const ctx = canvas.getContext('2d');
@@ -198,53 +131,81 @@
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
-        const fruits = ['🍉', '🍊', '🍓', '🍍', '🍎', '🍇'];
+        const fruits = ['🍋', '🍊', '🍎', '🍉', '🥝'];
         let activeItems = [];
         let sliceLines = [];
-        let earned = 10.00;
+        let earned = 12.00;
 
         class Fruit {
             constructor() {
-                this.x = Math.random() * (canvas.width - 40) + 20;
-                this.y = canvas.height + 30;
-                this.vx = (Math.random() - 0.5) * 3;
-                this.vy = -(Math.random() * 4 + 8);
+                this.x = Math.random() * (canvas.width - 60) + 30;
+                this.y = canvas.height + 40;
+                // Viteză mult mai mică pentru o animație ușoară și plutitoare
+                this.vx = (Math.random() - 0.5) * 1.5; 
+                this.vy = -(Math.random() * 2 + 6); // Aruncare mai domoală
                 this.emoji = fruits[Math.floor(Math.random() * fruits.length)];
                 this.sliced = false;
-                this.size = 36;
+                this.size = 42; // Fructe puțin mai mari
+                this.rotation = 0;
+                this.rotSpeed = (Math.random() - 0.5) * 0.05;
             }
             update() {
                 this.x += this.vx;
                 this.y += this.vy;
-                this.vy += 0.25; // gravity
+                this.vy += 0.08; // Gravitație foarte mică pentru senzația de plutire
+                this.rotation += this.rotSpeed;
             }
             draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation);
                 ctx.font = `${this.size}px sans-serif`;
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-                ctx.fillText(this.emoji, this.x, this.y);
+                ctx.fillText(this.emoji, 0, 0);
+                ctx.restore();
             }
         }
 
         function createSliceEffect(x, y) {
+            // Linie de tăiere portocalie/galbenă
             sliceLines.push({
-                x1: x - 40, y1: y - 20,
-                x2: x + 40, y2: y + 20,
+                x1: x - 50, y1: y - 20,
+                x2: x + 50, y2: y + 20,
                 alpha: 1
             });
             
-            // Pop-up text +$2.00
             const el = document.getElementById('earnedAmount');
             earned += 2.00;
             if (el) el.innerText = earned.toFixed(2);
         }
 
-        let frameCount = 0;
-        function animate() {
-            ctx.fillStyle = 'rgba(11, 15, 23, 0.4)';
+        function drawWoodBackground() {
+            // Gradient maro închis
+            let grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
+            grad.addColorStop(0, '#261408'); 
+            grad.addColorStop(0.5, '#1a0b03');
+            grad.addColorStop(1, '#0c0401');
+            ctx.fillStyle = grad;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            if (frameCount % 45 === 0) {
+            // Linii subtile verticale pentru textură
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.015)';
+            ctx.lineWidth = 1;
+            for(let i = 0; i < canvas.width; i += 25) {
+                ctx.beginPath();
+                ctx.moveTo(i, 0);
+                ctx.lineTo(i, canvas.height);
+                ctx.stroke();
+            }
+        }
+
+        let frameCount = 0;
+        function animate() {
+            drawWoodBackground();
+
+            // Spawn mai rar pentru a nu aglomera ecranul
+            if (frameCount % 70 === 0) {
                 activeItems.push(new Fruit());
             }
 
@@ -253,31 +214,31 @@
                 f.update();
                 f.draw();
 
-                // Simulare automată tăiere când fructul ajunge la apogeu
-                if (!f.sliced && f.vy > -2 && f.vy < 2 && f.y < canvas.height * 0.7) {
+                // Tăiere când ajunge aproape de vârful aruncării
+                if (!f.sliced && f.vy > -1 && f.vy < 1.5 && f.y < canvas.height * 0.75) {
                     f.sliced = true;
                     createSliceEffect(f.x, f.y);
                 }
 
-                if (f.y > canvas.height + 50) {
+                if (f.y > canvas.height + 60) {
                     activeItems.splice(i, 1);
                 }
             }
 
-            // Desenează liniile de sabie (slice trail)
+            // Animație pentru tăieturi
             for (let i = sliceLines.length - 1; i >= 0; i--) {
                 let s = sliceLines[i];
-                ctx.strokeStyle = `rgba(59, 130, 246, ${s.alpha})`;
-                ctx.lineWidth = 4;
-                ctx.shadowColor = '#60a5fa';
-                ctx.shadowBlur = 10;
+                ctx.strokeStyle = `rgba(250, 204, 21, ${s.alpha})`; // Galben
+                ctx.lineWidth = 3;
+                ctx.shadowColor = '#eab308';
+                ctx.shadowBlur = 15;
                 ctx.beginPath();
                 ctx.moveTo(s.x1, s.y1);
                 ctx.lineTo(s.x2, s.y2);
                 ctx.stroke();
                 ctx.shadowBlur = 0;
 
-                s.alpha -= 0.1;
+                s.alpha -= 0.05; // Fade out mai lent
                 if (s.alpha <= 0) sliceLines.splice(i, 1);
             }
 
