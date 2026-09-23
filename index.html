@@ -1,330 +1,204 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Freecash - Speel Games & Pak Beloningen</title>
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: #090d0a;
-      color: #ffffff;
-    }
-    .neon-text {
-      color: #20d66b;
-      text-shadow: 0 0 15px rgba(32, 214, 107, 0.4);
-    }
-    .neon-bg {
-      background: linear-gradient(135deg, #20d66b 0%, #00b84d 100%);
-    }
-    .neon-border {
-      border-color: rgba(32, 214, 107, 0.3);
-    }
-    .glass-card {
-      background: rgba(18, 26, 20, 0.7);
-      backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-    .glass-card:hover {
-      border-color: rgba(32, 214, 107, 0.4);
-      transform: translateY(-2px);
-    }
-    .pulse-glow {
-      box-shadow: 0 0 25px rgba(32, 214, 107, 0.4);
-      animation: pulse 2s infinite alternate;
-    }
-    @keyframes pulse {
-      0% { box-shadow: 0 0 15px rgba(32, 214, 107, 0.3); }
-      100% { box-shadow: 0 0 30px rgba(32, 214, 107, 0.7); }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Paid For Playing Games</title>
+    <!-- Tailwind CSS CDN pentru stilizare rapidă și modernă -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0b0f17;
+            color: #ffffff;
+        }
+        .gradient-text {
+            background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glow-btn {
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.5);
+        }
+    </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between overflow-x-hidden selection:bg-green-500 selection:text-black">
+<body class="min-h-screen pb-28 pt-4 px-4 flex flex-col items-center">
 
-  <!-- TOP NOTICE BAR -->
-  <div class="bg-gradient-to-r from-emerald-900/60 via-green-900/40 to-emerald-900/60 border-b border-green-500/20 py-2.5 px-4 text-center text-xs sm:text-sm font-semibold flex items-center justify-center gap-2">
-    <span class="inline-block w-2 h-2 rounded-full bg-green-400 animate-ping"></span>
-    <span>⚡ Exclusieve Aanbieding: <strong class="text-green-400">Claim tot $100 Welkomstbonus</strong> na registratie!</span>
-  </div>
-
-  <!-- NAVBAR -->
-  <header class="sticky top-0 z-50 bg-[#090d0a]/90 backdrop-blur-md border-b border-white/5 px-4 lg:px-8 py-3.5 flex items-center justify-between">
-    <div class="flex items-center gap-3">
-      <!-- Custom Safe Gaming Logo -->
-      <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-green-400 to-emerald-600 flex items-center justify-center font-black text-black text-xl shadow-lg shadow-green-500/20">
-        🎮
-      </div>
-      <div>
-        <span class="font-extrabold text-lg tracking-tight block leading-none">Freecash<span class="text-green-400">.</span></span>
-        <span class="text-[10px] text-gray-400 font-medium">Earn & Play</span>
-      </div>
+    <!-- Notification Banner (Ticker) -->
+    <div class="w-full max-w-md bg-gray-900/80 border border-gray-800 backdrop-blur rounded-full py-2 px-4 mb-6 text-xs text-gray-300 flex items-center justify-center gap-2 shadow-lg">
+        <span>🇺🇸</span>
+        <span class="font-semibold text-white">Jake R.</span>
+        <span>just earned</span>
+        <span class="font-bold text-green-400">$20.00</span>
+        <span class="text-gray-500">— paid instantly</span>
     </div>
 
-    <!-- Trustpilot Rating Badge -->
-    <div class="hidden sm:flex items-center gap-2 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full text-xs">
-      <span class="text-emerald-400 font-bold">★ 4.8/5</span>
-      <span class="text-gray-400">| 85.000+ Reviews</span>
-    </div>
+    <!-- Main Container -->
+    <main class="w-full max-w-md flex flex-col gap-6">
 
-    <!-- Top CTA Button -->
-    <a href="#" class="affiliate-btn neon-bg text-black font-extrabold text-xs sm:text-sm px-5 py-2.5 rounded-xl shadow-md hover:opacity-90 transition active:scale-95">
-      Meld Je Aan
-    </a>
-  </header>
+        <!-- Hero Section -->
+        <section class="text-center flex flex-col items-center gap-4">
+            <!-- App Logo / Icon -->
+            <div class="w-24 h-24 bg-gradient-to-tr from-blue-600 to-indigo-500 rounded-3xl flex items-center justify-center shadow-xl border border-white/10 p-3">
+                <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+            </div>
 
-  <main class="max-w-4xl mx-auto px-4 py-8 sm:py-12 flex-1 w-full space-y-12">
+            <!-- Rating -->
+            <div class="flex items-center gap-2 bg-gray-900/90 border border-gray-800 px-3 py-1 rounded-full text-xs">
+                <span class="text-yellow-400">★ 4.8</span>
+                <span class="text-gray-600">•</span>
+                <span class="text-gray-300">App Store</span>
+                <span class="text-gray-500">(14.2k reviews)</span>
+            </div>
 
-    <!-- HERO SECTION -->
-    <section class="text-center space-y-6">
-      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/30 text-green-400 text-xs font-bold uppercase tracking-wider">
-        🔥 Populairste Gaming Platform van 2026
-      </div>
+            <!-- Title & Subtitle -->
+            <h1 class="text-3xl font-extrabold tracking-tight leading-tight">
+                Get Paid For<br><span class="gradient-text">Playing Games</span>
+            </h1>
+            <p class="text-gray-400 text-sm max-w-xs">
+                Play games, complete quick tasks, and cash out real money anytime, no minimum.
+            </p>
 
-      <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight">
-        Word Betaald Om <br class="hidden sm:inline"/>
-        <span class="neon-text">Games Te Spelen</span> Op Je Telefoon
-      </h1>
+            <!-- Active users count -->
+            <div class="flex items-center gap-2 bg-emerald-950/40 border border-emerald-800/40 text-emerald-400 px-3 py-1.5 rounded-full text-xs">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span class="font-bold">1,845</span>
+                <span class="text-emerald-300/80">people earning right now</span>
+            </div>
+        </section>
 
-      <p class="text-gray-300 text-sm sm:text-base max-w-xl mx-auto font-medium leading-relaxed">
-        Test nieuwe spellen, behaal levels en pak direct tot wel <strong class="text-white font-bold">$100 beloning</strong>. Uitbetaling binnen 5 minuten via PayPal, Crypto of Gift Cards.
-      </p>
+        <!-- Preview Card -->
+        <section class="bg-gray-900/60 border border-gray-800/80 rounded-2xl p-4 flex flex-col gap-3">
+            <div class="flex justify-between items-center text-xs text-gray-400 border-b border-gray-800 pb-2">
+                <span>Earned: <strong class="text-green-400">$10.00</strong></span>
+                <span>$2.00 per slice</span>
+            </div>
+            <div class="bg-gray-950/80 rounded-xl p-3 flex justify-between items-center text-xs">
+                <div>
+                    <div class="font-semibold text-white">Fruxela — <span class="text-amber-400">Locked</span></div>
+                    <div class="text-gray-500 text-[11px]">Unlocks after 4 hrs of gameplay</div>
+                </div>
+                <span class="text-lg">🎮</span>
+            </div>
+        </section>
 
-      <!-- Main CTA Box -->
-      <div class="pt-2">
-        <a href="#" class="affiliate-btn inline-block w-full sm:w-auto neon-bg pulse-glow text-black font-black text-lg sm:text-xl px-10 py-4 rounded-2xl shadow-2xl transition hover:scale-105 active:scale-95">
-          🚀 START DIRECT & CLAIM BONUS
+        <!-- How It Works Section -->
+        <section class="bg-gray-900/40 border border-gray-800/60 rounded-2xl p-5">
+            <h2 class="text-lg font-bold mb-4">How it works</h2>
+            <ol class="space-y-4">
+                <li class="flex items-start gap-3">
+                    <span class="flex-shrink-0 w-7 h-7 rounded-full bg-blue-600/20 text-blue-400 border border-blue-500/30 font-bold flex items-center justify-center text-xs">1</span>
+                    <div class="text-xs text-gray-300 pt-1">Sign up on Freecash (Select 21+)</div>
+                </li>
+                <li class="flex items-start gap-3">
+                    <span class="flex-shrink-0 w-7 h-7 rounded-full bg-blue-600/20 text-blue-400 border border-blue-500/30 font-bold flex items-center justify-center text-xs">2</span>
+                    <div class="text-xs text-gray-300 pt-1">Complete at least 2-5 offers <br><span class="text-gray-500">(Play games & complete tasks)</span></div>
+                </li>
+                <li class="flex items-start gap-3">
+                    <span class="flex-shrink-0 w-7 h-7 rounded-full bg-blue-600/20 text-blue-400 border border-blue-500/30 font-bold flex items-center justify-center text-xs">3</span>
+                    <div class="text-xs text-gray-300 pt-1">Withdraw via PayPal, Venmo, and CashApp.</div>
+                </li>
+            </ol>
+        </section>
+
+        <!-- Highest-Paying Offers -->
+        <section class="bg-gray-900/40 border border-gray-800/60 rounded-2xl p-5">
+            <h2 class="text-lg font-bold mb-3">Highest-paying offers today</h2>
+            
+            <div class="flex items-center gap-3 bg-gray-950/80 p-3 rounded-xl mb-4 border border-gray-800">
+                <div class="w-10 h-10 rounded-lg bg-indigo-600/30 border border-indigo-500/30 flex items-center justify-center text-xl">🎯</div>
+                <div>
+                    <div class="font-bold text-xs">Get Paid To Game</div>
+                    <div class="text-[11px] text-gray-400">Sign-up to unlock the games</div>
+                </div>
+            </div>
+
+            <ul class="space-y-2 text-xs">
+                <li class="flex justify-between items-center bg-gray-950/40 p-3 rounded-xl border border-gray-800/50">
+                    <div>
+                        <div class="font-semibold text-white">Milestone 1</div>
+                        <div class="text-[11px] text-gray-400">Play for 15 minutes</div>
+                    </div>
+                    <span class="font-extrabold text-green-400 text-sm">$15</span>
+                </li>
+                <li class="flex justify-between items-center bg-gray-950/40 p-3 rounded-xl border border-gray-800/50">
+                    <div>
+                        <div class="font-semibold text-white">Milestone 2</div>
+                        <div class="text-[11px] text-gray-400">Reach Level 10</div>
+                    </div>
+                    <span class="font-extrabold text-green-400 text-sm">$25</span>
+                </li>
+                <li class="flex justify-between items-center bg-gray-950/40 p-3 rounded-xl border border-gray-800/50">
+                    <div>
+                        <div class="font-semibold text-white">Milestone 3</div>
+                        <div class="text-[11px] text-gray-400">Reach Level 25</div>
+                    </div>
+                    <span class="font-extrabold text-green-400 text-sm">$55</span>
+                </li>
+            </ul>
+            
+            <p class="text-[11px] text-gray-500 mt-3">
+                You get paid when the milestone hits — not for spending. Purchases just kill the grind.
+            </p>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="grid grid-cols-3 gap-2 text-center my-2">
+            <div class="bg-gray-900/50 border border-gray-800/80 p-3 rounded-xl">
+                <div class="font-extrabold text-sm text-white">500K+</div>
+                <div class="text-[10px] text-gray-400">Members</div>
+            </div>
+            <div class="bg-gray-900/50 border border-gray-800/80 p-3 rounded-xl">
+                <div class="font-extrabold text-sm text-yellow-400">4.8★</div>
+                <div class="text-[10px] text-gray-400">App Rating</div>
+            </div>
+            <div class="bg-gray-900/50 border border-gray-800/80 p-3 rounded-xl">
+                <div class="font-extrabold text-sm text-green-400">$342</div>
+                <div class="text-[10px] text-gray-400">Avg. Daily</div>
+            </div>
+        </section>
+
+        <!-- Legal & Disclaimers -->
+        <footer class="text-center text-[11px] text-gray-500 space-y-3 pt-2">
+            <p>
+                Availability, rewards, and eligibility may vary by user, location, and completed activity. Results are not guaranteed and are based on individual participation.
+            </p>
+            <div class="flex justify-center gap-4 text-gray-400 underline">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- Sticky Bottom CTA Button (AICI PUI LINK-UL TĂU) -->
+    <div class="fixed bottom-0 left-0 right-0 p-4 bg-gray-950/90 backdrop-blur-md border-t border-gray-800 flex flex-col items-center justify-center z-50">
+        <!-- ÎNLOCUIEȘTE LINK-UL DE MAI JOS ÎN ATRIBUTUL href -->
+        <a id="cta-button" href="https://taprkr.com/r/eyJ0IjoiZnJlZWNhc2gtY3BpIiwidGlkIjoiNzdjOGZlYjc5ODc4NDBjNTJlZDYiLCJ0cyI6MTc5MDE2MTg2ODQ1N30" class="glow-btn w-full max-w-md bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold py-3.5 px-6 rounded-xl text-center shadow-lg transition duration-200 text-sm tracking-wide">
+            CLAIM REWARD & START EARNING
         </a>
-        <p class="text-xs text-gray-400 mt-3 flex items-center justify-center gap-2">
-          <span>🔒 100% Gratis</span> • <span>⚡ Geen Inleg Nodig</span> • <span>⏱️ 2 Min Registratie</span>
-        </p>
-      </div>
-    </section>
-
-    <!-- LIVE CASHOUT FEED (SOCIAL PROOF) -->
-    <section class="glass-card rounded-2xl p-4 border border-white/10">
-      <div class="flex items-center justify-between text-xs text-gray-400 mb-3 font-semibold uppercase tracking-wider">
-        <span class="flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span> Live Uitbetalingen
+        <span class="text-[10px] text-gray-400 mt-1.5 flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-green-500"></span> Available now on iOS and Android
         </span>
-        <span>Zojuist Verwerkt</span>
-      </div>
-      
-      <div id="cashoutTicker" class="space-y-2 text-sm">
-        <div class="flex items-center justify-between bg-black/40 p-2.5 rounded-xl border border-white/5">
-          <div class="flex items-center gap-3">
-            <span class="text-lg">🇳🇱</span>
-            <div>
-              <p class="font-bold text-white text-xs sm:text-sm">Daan V. <span class="text-gray-400 font-normal">heeft uitbetaald</span></p>
-              <p class="text-[11px] text-gray-400">via PayPal</p>
-            </div>
-          </div>
-          <span class="font-extrabold text-green-400 text-sm sm:text-base">+$65.00</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- POPULAR GAMES GRID -->
-    <section class="space-y-4">
-      <div class="flex items-center justify-between">
-        <h2 class="text-xl font-bold tracking-tight">Populaire Games & Deals</h2>
-        <span class="text-xs text-green-400 font-semibold">Hoge Payouts ⚡</span>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <!-- Game 1 -->
-        <div class="glass-card rounded-2xl p-4 flex flex-col justify-between space-y-4">
-          <div class="flex items-center gap-3">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-purple-600 to-indigo-500 flex items-center justify-center text-2xl font-bold shadow-md">
-              🎲
-            </div>
-            <div>
-              <h3 class="font-bold text-sm">Monopoly GO</h3>
-              <p class="text-xs text-gray-400">Casual / Bordspel</p>
-            </div>
-          </div>
-          <div class="flex items-center justify-between pt-2 border-t border-white/5">
-            <div>
-              <span class="text-[10px] text-gray-400 block uppercase font-bold">Beloning</span>
-              <span class="text-lg font-black text-green-400">$85.00</span>
-            </div>
-            <a href="#" class="affiliate-btn bg-white/10 hover:bg-green-500 hover:text-black font-bold text-xs px-4 py-2 rounded-xl transition">
-              Speel Nu
-            </a>
-          </div>
-        </div>
-
-        <!-- Game 2 -->
-        <div class="glass-card rounded-2xl p-4 flex flex-col justify-between space-y-4">
-          <div class="flex items-center gap-3">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-amber-500 to-orange-600 flex items-center justify-center text-2xl font-bold shadow-md">
-              🎰
-            </div>
-            <div>
-              <h3 class="font-bold text-sm">Coin Master</h3>
-              <p class="text-xs text-gray-400">Avontuur / Strategie</p>
-            </div>
-          </div>
-          <div class="flex items-center justify-between pt-2 border-t border-white/5">
-            <div>
-              <span class="text-[10px] text-gray-400 block uppercase font-bold">Beloning</span>
-              <span class="text-lg font-black text-green-400">$62.50</span>
-            </div>
-            <a href="#" class="affiliate-btn bg-white/10 hover:bg-green-500 hover:text-black font-bold text-xs px-4 py-2 rounded-xl transition">
-              Speel Nu
-            </a>
-          </div>
-        </div>
-
-        <!-- Game 3 -->
-        <div class="glass-card rounded-2xl p-4 flex flex-col justify-between space-y-4">
-          <div class="flex items-center gap-3">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-tr from-blue-500 to-cyan-500 flex items-center justify-center text-2xl font-bold shadow-md">
-              🧩
-            </div>
-            <div>
-              <h3 class="font-bold text-sm">Family Island</h3>
-              <p class="text-xs text-gray-400">Farming / Puzzel</p>
-            </div>
-          </div>
-          <div class="flex items-center justify-between pt-2 border-t border-white/5">
-            <div>
-              <span class="text-[10px] text-gray-400 block uppercase font-bold">Beloning</span>
-              <span class="text-lg font-black text-green-400">$45.00</span>
-            </div>
-            <a href="#" class="affiliate-btn bg-white/10 hover:bg-green-500 hover:text-black font-bold text-xs px-4 py-2 rounded-xl transition">
-              Speel Nu
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- HOW IT WORKS (3 STEPS) -->
-    <section class="space-y-6 pt-4">
-      <h2 class="text-xl sm:text-2xl font-bold text-center">Hoe Het Werkt In 3 Stappen</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
-        <div class="glass-card p-5 rounded-2xl space-y-2">
-          <div class="w-10 h-10 rounded-full bg-green-500/20 text-green-400 font-black text-lg flex items-center justify-center mx-auto">1</div>
-          <h3 class="font-bold text-base">Kies Een Game</h3>
-          <p class="text-xs text-gray-400">Meld je gratis aan en kies uit honderden populaire mobiele spellen.</p>
-        </div>
-        <div class="glass-card p-5 rounded-2xl space-y-2">
-          <div class="w-10 h-10 rounded-full bg-green-500/20 text-green-400 font-black text-lg flex items-center justify-center mx-auto">2</div>
-          <h3 class="font-bold text-base">Speel & Behaal Levels</h3>
-          <p class="text-xs text-gray-400">Voltooi simpele opdrachten of bereik bepaalde niveaus in het spel.</p>
-        </div>
-        <div class="glass-card p-5 rounded-2xl space-y-2">
-          <div class="w-10 h-10 rounded-full bg-green-500/20 text-green-400 font-black text-lg flex items-center justify-center mx-auto">3</div>
-          <h3 class="font-bold text-base">Cashen Maar!</h3>
-          <p class="text-xs text-gray-400">Ontvang je geld direct via PayPal, Bitcoin, Visa of cadeaubonnen.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- CASHOUT METHODS -->
-    <section class="glass-card p-6 rounded-2xl text-center space-y-4">
-      <p class="text-xs uppercase font-bold text-gray-400 tracking-wider">Directe Uitbetalingsopties</p>
-      <div class="flex flex-wrap justify-center items-center gap-6 opacity-80 text-sm font-bold">
-        <span class="bg-white/5 border border-white/10 px-4 py-2 rounded-xl">💳 PayPal</span>
-        <span class="bg-white/5 border border-white/10 px-4 py-2 rounded-xl">₿ Bitcoin / Crypto</span>
-        <span class="bg-white/5 border border-white/10 px-4 py-2 rounded-xl">🛍️ Amazon Gift Cards</span>
-        <span class="bg-white/5 border border-white/10 px-4 py-2 rounded-xl">🍏 Apple & Google Play</span>
-      </div>
-    </section>
-
-    <!-- FAQ ACCORDION -->
-    <section class="space-y-4">
-      <h2 class="text-xl font-bold tracking-tight text-center">Veelgestelde Vragen</h2>
-      <div class="space-y-2 max-w-2xl mx-auto">
-        <details class="glass-card rounded-xl p-4 cursor-pointer group">
-          <summary class="font-bold text-sm flex justify-between items-center list-none">
-            Is Freecash echt 100% gratis?
-            <span class="text-green-400 transition group-open:rotate-180">▼</span>
-          </summary>
-          <p class="text-xs text-gray-300 mt-2 leading-relaxed">
-            Ja, absoluut. Je hoeft nooit geld in te leggen. Spelontwikkelaars betalen Freecash om nieuwe spelers te werven, en Freecash deelt die vergoeding direct met jou.
-          </p>
-        </details>
-
-        <details class="glass-card rounded-xl p-4 cursor-pointer group">
-          <summary class="font-bold text-sm flex justify-between items-center list-none">
-            Hoe snel word ik uitbetaald?
-            <span class="text-green-400 transition group-open:rotate-180">▼</span>
-          </summary>
-          <p class="text-xs text-gray-300 mt-2 leading-relaxed">
-            Vrijwel direct. Zodra je de minimale drempel (vaak al vanaf $2.00) hebt bereikt, staat de uitbetaling meestal binnen 5 tot 15 minuten op je rekening of wallet.
-          </p>
-        </details>
-      </div>
-    </section>
-
-    <!-- BOTTOM FLOATING CTA FOR MOBILE -->
-    <div class="pt-6 text-center">
-      <a href="#" class="affiliate-btn inline-block w-full neon-bg font-black text-lg py-4 rounded-2xl shadow-xl transition active:scale-95 text-black">
-        👉 PAK JOUW $100 BONUS NU
-      </a>
     </div>
 
-  </main>
-
-  <!-- FOOTER (TikTok Compliant) -->
-  <footer class="border-t border-white/10 bg-black/80 py-8 px-4 text-center text-xs text-gray-400 space-y-3">
-    <p>© 2026 Freecash Rewards Partner. Alle rechten voorbehouden.</p>
-    <p class="max-w-2xl mx-auto text-[11px] text-gray-400 leading-relaxed">
-      Disclaimer: Deze website is een onafhankelijk promotieplatform en is op geen enkele wijze gelieerd aan, gesponsord door of goedgekeurd door TikTok, ByteDance Ltd., PayPal of de genoemde game-ontwikkelaars. Alle handelsmerken behoren toe aan hun respectievelijke eigenaren.
-    </p>
-  </footer>
-
-  <!-- SCRIPT UNIFICAT PENTRU REDIRECȚIONARE ȘI BANNERE LIVE -->
-  <script>
-    // ====================================================
-    // 🔗 SCHIMBĂ LINKUL TĂU AICI (PUNE ADRESA TA DE AFILIAT):
-    // ====================================================
-    const MY_AFFILIATE_LINK = "https://taprkr.com/r/eyJ0IjoiZnJlZWNhc2gtY3BpIiwidGlkIjoiNzdjOGZlYjc5ODc4NDBjNTJlZDYiLCJ0cyI6MTc5MDEwNjE5MDEwMH0"; 
-
-    // Setează linkul automat la toate butoanele
-    document.addEventListener("DOMContentLoaded", () => {
-      const buttons = document.querySelectorAll('.affiliate-btn');
-      buttons.forEach(btn => {
-        btn.setAttribute('href', MY_AFFILIATE_LINK);
-        btn.setAttribute('target', '_blank');
-        btn.setAttribute('rel', 'noopener noreferrer');
-      });
-    });
-
-    // Generator dinamic de retrageri live (pentru credibilitate)
-    const recentCashouts = [
-      { name: "Sanne M.", amount: "$42.50", method: "PayPal", flag: "🇳🇱" },
-      { name: "Lars K.", amount: "$100.00", method: "Bitcoin", flag: "🇳🇱" },
-      { name: "Emma B.", amount: "$25.00", method: "Visa", flag: "🇧🇪" },
-      { name: "Milan V.", amount: "$80.00", method: "PayPal", flag: "🇳🇱" }
-    ];
-
-    let currentIndex = 0;
-    setInterval(() => {
-      currentIndex = (currentIndex + 1) % recentCashouts.length;
-      const data = recentCashouts[currentIndex];
-      const ticker = document.getElementById('cashoutTicker');
-      
-      if(ticker) {
-        ticker.innerHTML = `
-          <div class="flex items-center justify-between bg-black/40 p-2.5 rounded-xl border border-white/5 transition-all duration-500">
-            <div class="flex items-center gap-3">
-              <span class="text-lg">${data.flag}</span>
-              <div>
-                <p class="font-bold text-white text-xs sm:text-sm">${data.name} <span class="text-gray-400 font-normal">heeft uitbetaald</span></p>
-                <p class="text-[11px] text-gray-400">via ${data.method}</p>
-              </div>
-            </div>
-            <span class="font-extrabold text-green-400 text-sm sm:text-base">+${data.amount}</span>
-          </div>
-        `;
-      }
-    }, 4000);
-  </script>
+    <script>
+        // Opțional: transmite parametri din URL-ul paginii tale (ex. ttclid, campid) mai departe pe linkul tău
+        window.addEventListener('DOMContentLoaded', () => {
+            const currentParams = window.location.search;
+            const ctaBtn = document.getElementById('cta-button');
+            if (currentParams && ctaBtn) {
+                // Adaugă parametrii automat la link-ul tău de redirecționare
+                if (ctaBtn.href.includes('?')) {
+                    ctaBtn.href += '&' + currentParams.substring(1);
+                } else {
+                    ctaBtn.href += currentParams;
+                }
+            }
+        });
+    </script>
 </body>
 </html>
