@@ -10,139 +10,263 @@
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #050b08; /* Fundal verde foarte închis */
+            background-color: #030805;
             color: #ffffff;
+            -webkit-tap-highlight-color: transparent;
         }
-        .game-title {
-            color: #4ade80;
-            text-shadow: 0 0 20px rgba(74, 222, 128, 0.2);
-        }
+        
         .card-bg {
-            background-color: #0a1410;
-            border: 1px solid #162a20;
+            background: linear-gradient(180deg, #07130c 0%, #040a06 100%);
+            border: 1px solid #11281a;
+        }
+
+        .game-title {
+            color: #38d372;
+            text-shadow: 0 0 25px rgba(56, 211, 114, 0.25);
+        }
+
+        /* Game Over overlay styling */
+        #game-over-overlay {
+            background: rgba(8, 14, 10, 0.94);
+            backdrop-filter: blur(8px);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        #game-over-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .cta-btn {
+            background: linear-gradient(180deg, #38d372 0%, #26a355 100%);
+            box-shadow: 0 4px 20px rgba(56, 211, 114, 0.35);
+        }
+        .cta-btn:hover {
+            background: linear-gradient(180deg, #42e27e 0%, #2cb55f 100%);
         }
     </style>
 </head>
-<body class="min-h-screen pb-32 pt-2 px-4 flex flex-col items-center">
+<body class="min-h-screen pb-36 pt-3 px-4 flex flex-col items-center">
 
-    <!-- Notification Banner (Top) -->
-    <div class="w-full text-center py-2 mb-4 text-[11px] text-gray-400">
-        <span>us</span> <span class="font-bold text-white">Noah W.</span> just earned <span class="font-bold text-green-400">$65.10</span> — paid instantly
+    <!-- Top Live Notification Banner -->
+    <div class="w-full text-center py-1.5 mb-3 text-[12px] text-gray-400 font-medium">
+        <span>us </span><span id="ticker-name" class="font-bold text-white">Jake R.</span> just earned <span id="ticker-amount" class="font-bold text-[#38d372]">$20.00</span> — paid instantly
     </div>
 
     <!-- Main Container -->
-    <main class="w-full max-w-md flex flex-col gap-6">
+    <main class="w-full max-w-md flex flex-col gap-5">
 
-        <!-- Hero Section Card -->
-        <section class="card-bg rounded-[2rem] p-8 flex flex-col items-center text-center shadow-2xl">
+        <!-- MAIN APP CARD -->
+        <section class="card-bg rounded-[2.2rem] p-7 flex flex-col items-center text-center shadow-2xl relative overflow-hidden">
             
-            <!-- App Logo (Design similar cu imaginea cerută) -->
-            <div class="w-24 h-24 bg-[#0acf73] rounded-[2rem] flex items-center justify-center mb-6 shadow-[0_0_30px_rgba(10,207,115,0.3)]">
-                <!-- SVG care imită iconița Freecash (S-ul) -->
+            <!-- Top App Logo -->
+            <div class="w-24 h-24 bg-[#0acf73] rounded-[2.2rem] flex items-center justify-center mb-5 shadow-[0_0_35px_rgba(10,207,115,0.35)] relative">
                 <svg class="w-14 h-14 text-white" viewBox="0 0 32 32" fill="currentColor">
                     <path d="M21 9h-6.5c-2.5 0-4.5 2-4.5 4.5v2.5c0 2.5 2 4.5 4.5 4.5H19c.8 0 1.5.7 1.5 1.5S19.8 23.5 19 23.5H10v3h9c2.5 0 4.5-2 4.5-4.5v-2.5c0-2.5-2-4.5-4.5-4.5H14.5c-.8 0-1.5-.7-1.5-1.5S13.7 12 14.5 12H21V9z"/>
                     <path d="M12.5 10.5h4v-2h-4zM15.5 23.5h-4v2h4z" />
                 </svg>
             </div>
 
-            <!-- Rating -->
-            <div class="flex items-center gap-1.5 bg-[#050b08] border border-[#162a20] px-3 py-1.5 rounded-full text-[11px] mb-4">
-                <div class="flex text-red-500 text-[10px]">
-                    ★★★★★
-                </div>
-                <span class="text-white font-bold ml-1">4.8</span>
-                <span class="text-gray-600 px-1">•</span>
+            <!-- Rating Pill -->
+            <div class="flex items-center gap-1.5 bg-[#040b07] border border-[#11281a] px-3.5 py-1.5 rounded-full text-[11px] mb-5">
+                <div class="flex text-red-500 text-[10px] tracking-widest">★★★★★</div>
+                <span class="text-white font-extrabold ml-1">4.8</span>
+                <span class="text-gray-600 px-0.5">•</span>
                 <span class="text-gray-300">App Store</span>
-                <span class="text-gray-500 ml-1">(14.2k reviews)</span>
+                <span class="text-gray-500 font-normal ml-0.5">(14.2k reviews)</span>
             </div>
 
-            <!-- Title & Subtitle -->
-            <h1 class="text-[2.2rem] font-black tracking-tight leading-[1.1] mb-4">
+            <!-- Title -->
+            <h1 class="text-[2.3rem] font-black tracking-tight leading-[1.1] mb-4">
                 <span class="text-white">Get Paid For</span><br>
                 <span class="game-title">Playing Games</span>
             </h1>
-            <p class="text-gray-400 text-sm max-w-[280px] leading-relaxed mb-6">
+
+            <p class="text-gray-400 text-xs sm:text-sm max-w-[280px] leading-relaxed mb-6 font-medium">
                 Play games, complete quick tasks, and cash out real money anytime, no minimum.
             </p>
 
-            <!-- Earning Pill -->
-            <div class="flex items-center gap-2 bg-[#0a1e14] border border-[#103a24] text-white px-4 py-2 rounded-full text-[11px]">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#4ade80] animate-pulse shadow-[0_0_8px_#4ade80]"></span>
-                <span class="font-bold text-[#4ade80]">1,845</span>
+            <!-- Active Earners Pill -->
+            <div class="flex items-center gap-2 bg-[#08180e] border border-[#133520] text-white px-4 py-2 rounded-full text-[11px] font-semibold">
+                <span class="w-2 h-2 rounded-full bg-[#38d372] animate-ping"></span>
+                <span class="text-[#38d372] font-black">1,845</span>
                 <span class="text-gray-300">people earning right now</span>
             </div>
         </section>
 
-        <!-- Live Gameplay Interactive Video/Canvas Section -->
-        <section class="relative w-full h-[320px] rounded-[2rem] overflow-hidden border border-[#2a1f18] shadow-2xl">
-            <!-- Canvas Animation -->
+        <!-- GAMEPLAY CANVAS SECTION (FRUIT NINJA ANIMATION) -->
+        <section class="relative w-full h-[330px] rounded-[2.2rem] overflow-hidden border border-[#231710] shadow-2xl">
+            <!-- Canvas -->
             <canvas id="gameplayCanvas" class="absolute inset-0 w-full h-full object-cover z-0"></canvas>
             
-            <!-- Top Overlay Elements -->
+            <!-- Live Canvas Top HUD -->
             <div class="relative z-10 flex justify-between items-start p-4">
-                <!-- Earned Left -->
-                <div class="bg-[#121c17]/90 border border-[#23352a] px-3 py-1.5 rounded-2xl flex flex-col items-center">
-                    <div class="text-[9px] text-gray-400 font-bold uppercase tracking-widest mb-0.5">Earned</div>
-                    <div class="text-[#4ade80] font-black text-xl leading-none">$<span id="earnedAmount">68.00</span></div>
+                <!-- Earned Box -->
+                <div class="bg-[#0b1510]/90 border border-[#1b3324] px-3.5 py-2 rounded-2xl flex flex-col items-center backdrop-blur-sm">
+                    <div class="text-[9px] text-gray-400 font-extrabold uppercase tracking-widest mb-0.5">EARNED</div>
+                    <div class="text-[#38d372] font-black text-xl leading-none">$<span id="earnedAmount">16.00</span></div>
                 </div>
                 
-                <!-- Hearts Middle -->
-                <div class="bg-[#121c17]/80 border border-[#23352a] px-3 py-1.5 rounded-full flex gap-1.5 mt-1">
+                <!-- Lives Box -->
+                <div class="bg-[#0b1510]/90 border border-[#1b3324] px-3 py-1.5 rounded-full flex gap-1.5 mt-1 backdrop-blur-sm">
                     <span class="text-red-500 text-xs">❤️</span>
                     <span class="text-red-500 text-xs">❤️</span>
                     <span class="text-red-500 text-xs">❤️</span>
                 </div>
 
-                <!-- Per slice Right -->
-                <div class="bg-[#241c0e]/90 border border-[#3a2d16] px-3 py-1.5 rounded-2xl flex flex-col items-center">
-                    <div class="text-yellow-400 font-black text-sm leading-none">$2.00</div>
-                    <div class="text-[9px] text-gray-400 mt-1">per slice</div>
+                <!-- Per Slice Box -->
+                <div class="bg-[#1c1409]/90 border border-[#382811] px-3.5 py-2 rounded-2xl flex flex-col items-center backdrop-blur-sm">
+                    <div class="text-yellow-400 font-black text-base leading-none">$2.00</div>
+                    <div class="text-[9px] text-gray-400 font-medium mt-0.5">per slice</div>
                 </div>
             </div>
 
-            <!-- Live Gameplay Tag -->
-            <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 bg-black/80 px-4 py-1.5 rounded-full text-[10px] font-bold tracking-widest uppercase text-gray-400">
-                Live gameplay
+            <!-- Bottom "LIVE" Badge -->
+            <div class="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 bg-black/75 backdrop-blur-sm px-4 py-1 rounded-full text-[10px] font-extrabold tracking-widest uppercase text-gray-400 border border-white/10">
+                LIVE
+            </div>
+
+            <!-- GAME OVER OVERLAY SCREEN -->
+            <div id="game-over-overlay" class="absolute inset-0 z-20 flex flex-col items-center justify-center text-center p-6">
+                <h2 class="text-3xl font-black text-white tracking-wider mb-2">GAME OVER</h2>
+                <div class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">FINAL EARNINGS</div>
+                <div class="text-5xl font-black text-[#38d372] mb-6">$86.00</div>
+                <div class="bg-[#0a2315] border border-[#164d2d] text-[#38d372] px-5 py-2 rounded-full text-xs font-bold tracking-wide">
+                    Cashed out instantly
+                </div>
             </div>
         </section>
 
-        <!-- How it works & Offers sections -->
-        <section class="card-bg rounded-[2rem] p-6 text-sm">
-            <h2 class="text-xs font-bold text-gray-400 tracking-wider uppercase mb-5">How it works</h2>
+        <!-- HOW IT WORKS SECTION -->
+        <section class="card-bg rounded-[2.2rem] p-6 text-sm">
+            <h2 class="text-[11px] font-black text-gray-400 tracking-wider uppercase mb-5">HOW IT WORKS</h2>
             <ol class="space-y-4">
-                <li class="flex items-start gap-4">
-                    <span class="flex-shrink-0 w-6 h-6 rounded-full bg-[#103a24] text-[#4ade80] font-bold flex items-center justify-center text-[10px]">1</span>
-                    <div class="text-gray-300">Sign up on Freecash (Select 21+)</div>
+                <li class="flex items-center gap-4">
+                    <span class="flex-shrink-0 w-7 h-7 rounded-full bg-[#0d2a19] text-[#38d372] font-black flex items-center justify-center text-xs">1</span>
+                    <div class="text-gray-200 font-semibold text-xs sm:text-sm">Sign up on Freecash <span class="text-gray-400 font-normal">(Select 21+)</span></div>
                 </li>
                 <li class="flex items-start gap-4">
-                    <span class="flex-shrink-0 w-6 h-6 rounded-full bg-[#103a24] text-[#4ade80] font-bold flex items-center justify-center text-[10px]">2</span>
-                    <div class="text-gray-300">Complete at least 2-5 offers <br><span class="text-gray-500 text-xs">(Play games & complete tasks)</span></div>
+                    <span class="flex-shrink-0 w-7 h-7 rounded-full bg-[#0d2a19] text-[#38d372] font-black flex items-center justify-center text-xs mt-0.5">2</span>
+                    <div class="text-gray-200 font-semibold text-xs sm:text-sm">
+                        Complete at least 2-5 offers
+                        <div class="text-gray-400 font-normal text-xs mt-0.5">(Play games & complete tasks)</div>
+                    </div>
                 </li>
-                <li class="flex items-start gap-4">
-                    <span class="flex-shrink-0 w-6 h-6 rounded-full bg-[#103a24] text-[#4ade80] font-bold flex items-center justify-center text-[10px]">3</span>
-                    <div class="text-gray-300">Withdraw via PayPal, Venmo, and CashApp.</div>
+                <li class="flex items-center gap-4">
+                    <span class="flex-shrink-0 w-7 h-7 rounded-full bg-[#0d2a19] text-[#38d372] font-black flex items-center justify-center text-xs">3</span>
+                    <div class="text-gray-200 font-semibold text-xs sm:text-sm">Withdraw via PayPal, Venmo, and CashApp.</div>
                 </li>
             </ol>
         </section>
-        
+
+        <!-- HIGHEST-PAYING OFFERS TODAY SECTION -->
+        <section class="card-bg rounded-[2.2rem] p-6">
+            <h2 class="text-[11px] font-black text-[#38d372] tracking-wider uppercase mb-5">HIGHEST-PAYING OFFERS TODAY</h2>
+            
+            <!-- Offer Header -->
+            <div class="flex items-center gap-3.5 mb-5">
+                <!-- Mini Games Collage Logo -->
+                <div class="w-12 h-12 rounded-xl overflow-hidden bg-[#122b1c] flex items-center justify-center border border-[#1b3e28] shadow-md flex-shrink-0">
+                    <svg class="w-10 h-10" viewBox="0 0 40 40">
+                        <rect width="40" height="40" fill="#0d1f14" />
+                        <circle cx="12" cy="12" r="6" fill="#ef4444" />
+                        <rect x="22" y="6" width="12" height="12" rx="3" fill="#3b82f6" />
+                        <path d="M8 26 L18 26 L13 36 Z" fill="#eab308" />
+                        <circle cx="28" cy="28" r="7" fill="#38d372" />
+                    </svg>
+                </div>
+                <div>
+                    <h3 class="font-extrabold text-white text-base leading-tight">Get Paid To Game</h3>
+                    <p class="text-xs text-gray-400">sign-up to unlock the games</p>
+                </div>
+            </div>
+
+            <!-- Milestones Cards -->
+            <div class="space-y-3">
+                <div class="bg-[#050e09] border border-[#11281a] rounded-2xl p-4 flex justify-between items-center">
+                    <div>
+                        <div class="text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-0.5">MILESTONE 1</div>
+                        <div class="font-bold text-white text-sm">Play for 15 minutes</div>
+                        <div class="text-xs text-gray-500 mt-0.5">Free milestone</div>
+                    </div>
+                    <div class="text-2xl font-black text-[#38d372]">$15</div>
+                </div>
+
+                <div class="bg-[#050e09] border border-[#11281a] rounded-2xl p-4 flex justify-between items-center">
+                    <div>
+                        <div class="text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-0.5">MILESTONE 2</div>
+                        <div class="font-bold text-white text-sm">Reach Level 10</div>
+                        <div class="text-xs text-gray-500 mt-0.5">Free milestone</div>
+                    </div>
+                    <div class="text-2xl font-black text-[#38d372]">$25</div>
+                </div>
+
+                <div class="bg-[#050e09] border border-[#11281a] rounded-2xl p-4 flex justify-between items-center">
+                    <div>
+                        <div class="text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-0.5">MILESTONE 3</div>
+                        <div class="font-bold text-white text-sm">Reach Level 25</div>
+                        <div class="text-xs text-gray-400 mt-0.5 max-w-[200px]">Insider move: skip ~4h grind with a small in-game purchase</div>
+                    </div>
+                    <div class="text-2xl font-black text-[#38d372]">$55</div>
+                </div>
+            </div>
+
+            <p class="text-[11px] text-gray-400 mt-4 leading-relaxed font-medium">
+                You get paid when the milestone hits — not for spending. Purchases just kill the grind.
+            </p>
+        </section>
+
+        <!-- STATS SECTION -->
+        <section class="card-bg rounded-[2.2rem] p-5 grid grid-cols-3 text-center divide-x divide-[#11281a]">
+            <div class="px-2">
+                <div class="text-xl font-black text-white">500K+</div>
+                <div class="text-[9px] font-bold text-gray-500 uppercase tracking-wider mt-1">MEMBERS</div>
+            </div>
+            <div class="px-2">
+                <div class="text-xl font-black text-white">4.8★</div>
+                <div class="text-[9px] font-bold text-gray-500 uppercase tracking-wider mt-1">APP RATING</div>
+            </div>
+            <div class="px-2">
+                <div class="text-xl font-black text-white">$342</div>
+                <div class="text-[9px] font-bold text-gray-500 uppercase tracking-wider mt-1">AVG. DAILY EARNINGS</div>
+            </div>
+        </section>
+
+        <!-- FOOTER DISCLAIMER & LINKS -->
+        <footer class="text-center text-[10px] text-gray-500 px-4 space-y-3 mt-1 pb-4">
+            <p class="leading-relaxed">
+                Availability, rewards, and eligibility may vary by user, location, and completed activity. Results are not guaranteed and are based on individual participation.
+            </p>
+            <div class="flex justify-center gap-4 text-gray-400 font-medium">
+                <a href="#" class="hover:underline">Privacy Policy</a>
+                <a href="#" class="hover:underline">Terms of Service</a>
+            </div>
+        </footer>
+
     </main>
 
-    <!-- Sticky Bottom CTA Button -->
-    <div class="fixed bottom-0 left-0 right-0 p-5 bg-[#050b08]/95 backdrop-blur border-t border-[#162a20] flex flex-col items-center justify-center z-50">
-        <span class="text-[11px] text-gray-400 mb-3 flex items-center gap-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-[#4ade80] shadow-[0_0_5px_#4ade80]"></span> Available now on iOS and Android
-        </span>
-        <!-- ÎNLOCUIEȘTE LINKUL DE MAI JOS ÎN ATRIBUTUL href -->
-        <a id="cta-button"https://taprkr.com/r/eyJ0IjoiZnJlZWNhc2gtY3BpIiwidGlkIjoiNzdjOGZlYjc5ODc4NDBjNTJlZDYiLCJ0cyI6MTc5MDE2MTg2ODQ1N30" class="w-full max-w-md bg-[#439c6b] hover:bg-[#3ca468] text-white font-extrabold py-4 px-6 rounded-2xl text-center shadow-[0_0_20px_rgba(74,222,128,0.2)] transition duration-200 text-[15px]">
+    <!-- FIXED BOTTOM STICKY CTA BUTTON -->
+    <div class="fixed bottom-0 left-0 right-0 p-4 bg-[#030805]/95 backdrop-blur-md border-t border-[#11281a] flex flex-col items-center justify-center z-50">
+        <div class="text-[11px] text-gray-400 mb-2.5 flex items-center gap-2 font-medium">
+            <span class="w-2 h-2 rounded-full bg-[#38d372] shadow-[0_0_8px_#38d372]"></span> 
+            Available now on iOS and Android
+        </div>
+        
+        <!-- PUNE LINK-UL TĂU ÎN href DIN COD -->
+        <a id="cta-button"https://taprkr.com/r/eyJ0IjoiZnJlZWNhc2gtY3BpIiwidGlkIjoiNzdjOGZlYjc5ODc4NDBjNTJlZDYiLCJ0cyI6MTc5MDE2MTg2ODQ1N30" class="cta-btn w-full max-w-md text-white font-black py-4 px-6 rounded-2xl text-center text-base sm:text-lg transition duration-200 block tracking-wide">
             Download now — Claim $5 bonus
         </a>
     </div>
 
-    <!-- Script Animație Gameplay (Acum cu fructe tăiate în jumătăți și pop-up text) -->
+    <!-- JAVASCRIPT ANIMATION ENGINE -->
     <script>
         const canvas = document.getElementById('gameplayCanvas');
         const ctx = canvas.getContext('2d');
-        
+        const overlay = document.getElementById('game-over-overlay');
+        const earnedEl = document.getElementById('earnedAmount');
+
         function resizeCanvas() {
             canvas.width = canvas.parentElement.clientWidth;
             canvas.height = canvas.parentElement.clientHeight;
@@ -150,32 +274,43 @@
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
 
-        const fruits = ['🍍', '🍋', '🍊'];
+        // Fructe disponibile
+        const fruitTypes = [
+            { emoji: '🍍', name: 'pineapple' },
+            { emoji: '🍋', name: 'lemon' },
+            { emoji: '🍊', name: 'orange' },
+            { emoji: '🍉', name: 'watermelon' }
+        ];
+
         let activeFruits = [];
         let halfFruits = [];
         let floatingTexts = [];
         let sliceLines = [];
-        let earned = 68.00;
+        let currentEarned = 16.00;
+        let isGameOver = false;
+        let gameFrame = 0;
 
-        // Fructele care se ridică
-        class Fruit {
+        // Clasa pentru Fructul Intreg care zboara in sus
+        class WholeFruit {
             constructor() {
-                this.x = Math.random() * (canvas.width - 60) + 30;
+                this.x = Math.random() * (canvas.width - 80) + 40;
                 this.y = canvas.height + 40;
-                this.vx = (Math.random() - 0.5) * 2; 
-                this.vy = -(Math.random() * 2 + 7.5); 
-                this.emoji = fruits[Math.floor(Math.random() * fruits.length)];
-                this.sliced = false;
-                this.size = 45; 
+                this.vx = (Math.random() - 0.5) * 2.5;
+                this.vy = -(Math.random() * 2 + 8.5); // Viteza lansare
+                this.type = fruitTypes[Math.floor(Math.random() * fruitTypes.length)];
+                this.size = 50;
                 this.rotation = 0;
-                this.rotSpeed = (Math.random() - 0.5) * 0.05;
+                this.rotSpeed = (Math.random() - 0.5) * 0.08;
+                this.sliced = false;
             }
+
             update() {
                 this.x += this.vx;
                 this.y += this.vy;
-                this.vy += 0.12; 
+                this.vy += 0.16; // Gravitatie
                 this.rotation += this.rotSpeed;
             }
+
             draw() {
                 ctx.save();
                 ctx.translate(this.x, this.y);
@@ -183,12 +318,12 @@
                 ctx.font = `${this.size}px sans-serif`;
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-                ctx.fillText(this.emoji, 0, 0);
+                ctx.fillText(this.type.emoji, 0, 0);
                 ctx.restore();
             }
         }
 
-        // Bucățile de fruct tăiate
+        // Clasa pentru Jumatațile de Fruct tăiate (Fruit Ninja style)
         class HalfFruit {
             constructor(x, y, emoji, side, size) {
                 this.x = x;
@@ -196,162 +331,176 @@
                 this.emoji = emoji;
                 this.side = side; // 'left' sau 'right'
                 this.size = size;
-                this.vx = side === 'left' ? -2 : 2; // se despart
-                this.vy = -2; // salt ușor în sus după tăiere
-                this.rotation = side === 'left' ? -0.2 : 0.2;
-                this.rotSpeed = side === 'left' ? -0.1 : 0.1;
+                this.vx = side === 'left' ? -3 : 3; // se separa rapid stanga/dreapta
+                this.vy = -2.5; // mic salt la taiere
+                this.rotation = side === 'left' ? -0.3 : 0.3;
+                this.rotSpeed = side === 'left' ? -0.12 : 0.12;
             }
+
             update() {
                 this.x += this.vx;
                 this.y += this.vy;
-                this.vy += 0.2; // gravitație
+                this.vy += 0.22; // Cădere rapidă
                 this.rotation += this.rotSpeed;
             }
+
             draw() {
                 ctx.save();
                 ctx.translate(this.x, this.y);
                 ctx.rotate(this.rotation);
                 
-                // Desenăm doar jumătate din emoji
+                // Decupăm jumătatea de fruct
                 ctx.beginPath();
                 if (this.side === 'left') {
                     ctx.rect(-this.size, -this.size, this.size, this.size * 2);
                 } else {
                     ctx.rect(0, -this.size, this.size, this.size * 2);
                 }
-                ctx.clip(); // Mascăm cealaltă jumătate
+                ctx.clip();
                 
                 ctx.font = `${this.size}px sans-serif`;
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
                 ctx.fillText(this.emoji, 0, 0);
-                
                 ctx.restore();
             }
         }
 
-        // Textul verde care zboară în sus
+        // Clasa pentru Textul Pop-Up "+$2.00"
         class FloatingText {
-            constructor(x, y, text) {
+            constructor(x, y) {
                 this.x = x;
                 this.y = y;
-                this.text = text;
-                this.vy = -1.5;
+                this.text = '+$2.00';
+                this.vy = -1.8;
                 this.alpha = 1;
             }
+
             update() {
                 this.y += this.vy;
-                this.alpha -= 0.02; // dispare treptat
+                this.alpha -= 0.025;
             }
+
             draw() {
                 ctx.save();
                 ctx.globalAlpha = Math.max(0, this.alpha);
-                ctx.font = '900 28px Inter, sans-serif'; // font îngroșat
-                ctx.fillStyle = '#4ade80';
-                ctx.shadowColor = 'rgba(74, 222, 128, 0.5)';
-                ctx.shadowBlur = 15;
+                ctx.font = '900 26px Inter, sans-serif';
+                ctx.fillStyle = '#38d372';
+                ctx.shadowColor = 'rgba(56, 211, 114, 0.6)';
+                ctx.shadowBlur = 12;
                 ctx.textAlign = 'center';
                 ctx.fillText(this.text, this.x, this.y);
                 ctx.restore();
             }
         }
 
-        function createSliceEffect(f) {
-            // Generăm linia galbenă de tăiere
+        // Efectul de Taiere
+        function sliceFruit(fruit) {
+            // 1. Linia de taiere luminoasa
             sliceLines.push({
-                x1: f.x - 50, y1: f.y - 20,
-                x2: f.x + 50, y2: f.y + 20,
+                x1: fruit.x - 55, y1: fruit.y - 25,
+                x2: fruit.x + 55, y2: fruit.y + 25,
                 alpha: 1
             });
 
-            // Adăugăm jumătățile de fruct
-            halfFruits.push(new HalfFruit(f.x, f.y, f.emoji, 'left', f.size));
-            halfFruits.push(new HalfFruit(f.x, f.y, f.emoji, 'right', f.size));
+            // 2. Adaugam cele 2 jumatati de fruct
+            halfFruits.push(new HalfFruit(fruit.x, fruit.y, fruit.type.emoji, 'left', fruit.size));
+            halfFruits.push(new HalfFruit(fruit.x, fruit.y, fruit.type.emoji, 'right', fruit.size));
 
-            // Adăugăm textul zburător
-            floatingTexts.push(new FloatingText(f.x, f.y - 15, '+$2.00'));
-            
-            // Actualizăm suma totală
-            const el = document.getElementById('earnedAmount');
-            earned += 2.00;
-            if (el) el.innerText = earned.toFixed(2);
+            // 3. Adaugam textul +$2.00
+            floatingTexts.push(new FloatingText(fruit.x, fruit.y - 20));
+
+            // 4. Crestem suma
+            if (currentEarned < 86.00) {
+                currentEarned += 2.00;
+                if (currentEarned > 86.00) currentEarned = 86.00;
+                earnedEl.innerText = currentEarned.toFixed(2);
+            }
         }
 
+        // Desenare fundal de lemn cu lumini
         function drawWoodBackground() {
             let grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
-            grad.addColorStop(0, '#261408'); 
-            grad.addColorStop(0.5, '#1a0b03');
-            grad.addColorStop(1, '#0c0401');
+            grad.addColorStop(0, '#2d180b');
+            grad.addColorStop(0.5, '#1d0f07');
+            grad.addColorStop(1, '#0e0602');
             ctx.fillStyle = grad;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-            // Linii subtile verticale (lemn)
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.015)';
-            ctx.lineWidth = 1;
-            for(let i = 0; i < canvas.width; i += 25) {
+            // Textura lemn
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.02)';
+            ctx.lineWidth = 1.5;
+            for (let i = 0; i < canvas.width; i += 20) {
                 ctx.beginPath();
                 ctx.moveTo(i, 0);
                 ctx.lineTo(i, canvas.height);
                 ctx.stroke();
             }
-            
-            // Cercuri subtile bokeh
-            ctx.fillStyle = 'rgba(255, 150, 50, 0.03)';
-            ctx.beginPath(); ctx.arc(100, 200, 40, 0, Math.PI*2); ctx.fill();
-            ctx.beginPath(); ctx.arc(250, 150, 60, 0, Math.PI*2); ctx.fill();
         }
 
-        let frameCount = 0;
+        // Bucla principala de animatie
         function animate() {
             drawWoodBackground();
 
-            // Spawn fructe
-            if (frameCount % 80 === 0) {
-                activeFruits.push(new Fruit());
-            }
-
-            // Fructe întregi
-            for (let i = activeFruits.length - 1; i >= 0; i--) {
-                let f = activeFruits[i];
-                f.update();
-                f.draw();
-
-                // Simulăm tăierea când e aproape de vârf
-                if (!f.sliced && f.vy > -1 && f.vy < 2 && f.y < canvas.height * 0.7) {
-                    f.sliced = true;
-                    createSliceEffect(f);
-                    activeFruits.splice(i, 1); // Eliminăm fructul întreg
+            if (!isGameOver) {
+                // Generam fructe noi la intervale regulate
+                if (gameFrame % 65 === 0 && currentEarned < 86.00) {
+                    activeFruits.push(new WholeFruit());
                 }
 
-                if (f.y > canvas.height + 60) activeFruits.splice(i, 1);
+                // Actualizare si desenare fructe intregi
+                for (let i = activeFruits.length - 1; i >= 0; i--) {
+                    let f = activeFruits[i];
+                    f.update();
+                    f.draw();
+
+                    // Taiem fructul automat cand ajunge in zona superioara
+                    if (!f.sliced && f.vy > -1.5 && f.y < canvas.height * 0.65) {
+                        f.sliced = true;
+                        sliceFruit(f);
+                        activeFruits.splice(i, 1);
+                    } else if (f.y > canvas.height + 60) {
+                        activeFruits.splice(i, 1);
+                    }
+                }
+
+                // Daca am atins $86.00, afisam GAME OVER
+                if (currentEarned >= 86.00 && !isGameOver) {
+                    setTimeout(() => {
+                        isGameOver = true;
+                        overlay.classList.add('active');
+                    }, 600);
+                }
             }
 
-            // Jumătăți de fructe
+            // Desenare jumatati de fructe tăiate
             for (let i = halfFruits.length - 1; i >= 0; i--) {
                 let hf = halfFruits[i];
                 hf.update();
                 hf.draw();
-                if (hf.y > canvas.height + 60) halfFruits.splice(i, 1);
+                if (hf.y > canvas.height + 60) {
+                    halfFruits.splice(i, 1);
+                }
             }
 
-            // Linii de tăiere
+            // Desenare linii de taiere (slash lines)
             for (let i = sliceLines.length - 1; i >= 0; i--) {
                 let s = sliceLines[i];
-                ctx.strokeStyle = `rgba(250, 204, 21, ${s.alpha})`; 
-                ctx.lineWidth = 3;
+                ctx.strokeStyle = `rgba(250, 204, 21, ${s.alpha})`;
+                ctx.lineWidth = 3.5;
                 ctx.shadowColor = '#eab308';
-                ctx.shadowBlur = 15;
+                ctx.shadowBlur = 12;
                 ctx.beginPath();
                 ctx.moveTo(s.x1, s.y1);
                 ctx.lineTo(s.x2, s.y2);
                 ctx.stroke();
                 ctx.shadowBlur = 0;
 
-                s.alpha -= 0.05; 
+                s.alpha -= 0.08;
                 if (s.alpha <= 0) sliceLines.splice(i, 1);
             }
 
-            // Texte "+$2.00"
+            // Desenare texte "+$2.00"
             for (let i = floatingTexts.length - 1; i >= 0; i--) {
                 let ft = floatingTexts[i];
                 ft.update();
@@ -359,17 +508,31 @@
                 if (ft.alpha <= 0) floatingTexts.splice(i, 1);
             }
 
-            frameCount++;
+            gameFrame++;
             requestAnimationFrame(animate);
         }
 
         animate();
 
-        // Preluarea parametrilor din URL
+        // Schimbare dinamica a numelui din bannerul superior
+        const sampleUsers = [
+            { name: 'Jake R.', amount: '$20.00' },
+            { name: 'Emily T.', amount: '$18.20' },
+            { name: 'Noah W.', amount: '$65.10' },
+            { name: 'Sarah M.', amount: '$34.50' }
+        ];
+        let userIdx = 0;
+        setInterval(() => {
+            userIdx = (userIdx + 1) % sampleUsers.length;
+            document.getElementById('ticker-name').innerText = sampleUsers[userIdx].name;
+            document.getElementById('ticker-amount').innerText = sampleUsers[userIdx].amount;
+        }, 3500);
+
+        // Preluarea automata a parametrilor URL pentru link-ul de redirectionare
         window.addEventListener('DOMContentLoaded', () => {
             const currentParams = window.location.search;
             const ctaBtn = document.getElementById('cta-button');
-            if (currentParams && ctaBtn) {
+            if (currentParams && ctaBtn && ctaBtn.href) {
                 ctaBtn.href += (ctaBtn.href.includes('?') ? '&' : '?') + currentParams.substring(1);
             }
         });
